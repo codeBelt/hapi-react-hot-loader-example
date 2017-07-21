@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
+    "bootstrap": "4.0.0-alpha.6",
     "hapi": "^16.5.0",
     "hapi-webpack-plugin": "^2.0.0",
     "react": "^15.6.1",

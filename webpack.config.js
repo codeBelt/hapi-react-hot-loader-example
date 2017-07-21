@@ -2,6 +2,8 @@ var path = require('path');
 var webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
     entry: [
         // 'babel-polyfill',
@@ -31,7 +33,11 @@ module.exports = {
         // necessary for HMR to know where to load the hot update chunks
     },
 
-    devtool: 'cheap-module-eval-source-map',
+    devtool: (isProduction === true) ? 'none' : 'cheap-module-eval-source-map',
+
+    resolve: {
+        extensions: ['.js', '.jsx', '.json']
+    },
 
     module: {
         rules: [
@@ -65,6 +71,7 @@ module.exports = {
 
         // new webpack.NoEmitOnErrorsPlugin(),
         // do not emit compiled assets that include errors
+
         // new HtmlWebpackPlugin({
         //     template: path.resolve(__dirname, 'index.html')
         // })
