@@ -81,7 +81,7 @@ const config = {
         isProduction
             ? new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, 'src/index.html'),
-                minify: isProduction ? {collapseWhitespace: true, collapseInlineTagWhitespace: true} : false,
+                minify: {collapseWhitespace: true, collapseInlineTagWhitespace: true},
             })
             : null,
 
