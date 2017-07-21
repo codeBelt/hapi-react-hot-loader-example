@@ -99,7 +99,7 @@ const config = {
         : 'cheap-module-eval-source-map',
 
     performance: {
-        maxAssetSize: 1000000
+        maxAssetSize: 500000
     },
 };
 
