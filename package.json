@@ -1,7 +1,7 @@
 {
-  "name": "react-hot-boilerplate",
+  "name": "hapi-react-hot-loader",
   "version": "1.0.0",
-  "description": "Boilerplate for ReactJS project with hot code reloading",
+  "description": "Boilerplate for React Hot Loading with Hapi Server-side rendering",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./server.js",
     "prebuild": "cross-env rimraf dist",
@@ -10,9 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaearon/react-hot-boilerplate.git"
+    "url": "https://github.com/codeBelt/hapi-react-hot-loader"
   },
   "keywords": [
+    "hapi",
     "react",
     "reactjs",
     "boilerplate",
@@ -23,27 +24,23 @@
     "edit",
     "webpack"
   ],
-  "author": "Dan Abramov <dan.abramov@me.com> (http://github.com/gaearon)",
+  "author": "codeBelt",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gaearon/react-hot-boilerplate/issues"
-  },
-  "homepage": "https://github.com/gaearon/react-hot-boilerplate",
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
-    "babel-loader": "^6.2.10",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-react": "^6.22.0",
-    "babel-preset-stage-2": "^6.22.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "copy-webpack-plugin": "^4.0.1",
-    "cross-env": "^3.1.4",
+    "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
     "eslint": "^4.2.0",
     "eslint-plugin-react": "^7.1.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^2.29.0",
-    "rimraf": "^2.6.0",
+    "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
     "webpack": "^2.2.0",
     "webpack-dev-middleware": "^1.11.0",

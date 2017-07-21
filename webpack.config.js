@@ -95,7 +95,7 @@ const config = {
     ].filter(Boolean),
 
     devtool: isProduction
-        ? 'none'
+        ? 'nosources-source-map'
         : 'cheap-module-eval-source-map',
 };
 
