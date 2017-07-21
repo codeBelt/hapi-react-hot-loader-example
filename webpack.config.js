@@ -8,23 +8,17 @@ const env = process.env.NODE_ENV;
 const isProduction = (env === 'production');
 
 const config = {
-    entry: [
-        // 'babel-polyfill',
+    entry: isProduction
+        ? ['./src/index.js']
+        : [
+            // 'babel-polyfill',
 
-        'react-hot-loader/patch',
-        // activate HMR for React
+            'react-hot-loader/patch', // activate HMR for React
+            'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr', // bundle the client for webpack-hot-middleware and connect to the provided endpoint
+            // 'webpack/hot/only-dev-server', // bundle the client for hot reloading. only- means to only hot reload for successful updates
 
-        'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr',
-        // bundle the client for webpack-dev-server
-        // and connect to the provided endpoint
-
-        // 'webpack/hot/only-dev-server',
-        // bundle the client for hot reloading
-        // only- means to only hot reload for successful updates
-
-        './src/index.js',
-        // the entry point of our app
-    ],
+            './src/index.js',
+        ],
 
     resolve: {
         extensions: ['.js', '.jsx', '.json'],
@@ -33,7 +27,7 @@ const config = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: isProduction
-            ? 'assets/scripts/[name].[hash].js'
+            ? 'assets/scripts/[name].[chunkhash].js'
             : 'main.js',
         // publicPath: path.resolve(__dirname, 'dist') // necessary for HMR to know where to load the hot update chunks
     },
@@ -59,12 +53,18 @@ const config = {
             'process.env.NODE_ENV': JSON.stringify(env)
         }),
 
-        new webpack.HotModuleReplacementPlugin(), // enable HMR globally
-        new webpack.NamedModulesPlugin(), // prints more readable module names in the browser console on HMR updates
-        new webpack.NoEmitOnErrorsPlugin(), // do not emit compiled assets that include errors
+        isProduction
+            ? null
+            : new webpack.HotModuleReplacementPlugin(), // enable HMR globally
+        isProduction
+            ? null
+            : new webpack.NamedModulesPlugin(), // prints more readable module names in the browser console on HMR updates
+        isProduction
+            ? null
+            : new webpack.NoEmitOnErrorsPlugin(), // do not emit compiled assets that include errors
 
         isProduction
-            ? new ExtractTextPlugin({filename: "assets/styles/[name].css"})
+            ? new ExtractTextPlugin({filename: "assets/styles/[name].[chunkhash].css"})
             : null,
 
         isProduction
@@ -95,8 +95,12 @@ const config = {
     ].filter(Boolean),
 
     devtool: isProduction
-        ? 'nosources-source-map'
+        ? 'none'
         : 'cheap-module-eval-source-map',
+
+    performance: {
+        maxAssetSize: 1000000
+    },
 };
 
 module.exports = config;
