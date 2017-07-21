@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const env = process.env.NODE_ENV;
 const isProduction = (env === 'production');
@@ -49,6 +50,8 @@ const config = {
     },
 
     plugins: [
+        new ProgressBarPlugin(),
+
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(env)
         }),

@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./server.js",
     "prebuild": "cross-env rimraf dist",
-    "build": "cross-env NODE_ENV=production webpack -p --progress",
-    "lint": "eslint src"
+    "build": "cross-env NODE_ENV=production webpack -p",
+    "lint": "cross-env eslint src"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
     "eslint-plugin-react": "^7.1.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^2.29.0",
+    "progress-bar-webpack-plugin": "^1.10.0",
     "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
     "webpack": "^2.2.0",
