@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Footer from "./views/Footer";
-import Header from "./views/Header";
-import Home from "./views/Home";
+import Footer from "./Footer";
+import Header from "./Header";
+import Home from "./Home";
 
 // If you use React Router, make this component
 // render <Router> with your routes. Currently,

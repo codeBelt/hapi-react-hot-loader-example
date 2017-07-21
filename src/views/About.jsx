@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Layout from "../Layout";
-import Counter from "../Counter";
+import Layout from "./components/Layout";
+import Counter from "./components/Counter";
 
 class About extends React.Component {
     render() {

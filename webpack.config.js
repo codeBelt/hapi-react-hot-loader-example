@@ -10,7 +10,7 @@ const isProduction = (env === 'production');
 
 const config = {
     entry: isProduction
-        ? ['./src/index.js']
+        ? ['./src/main.js']
         : [
             // 'babel-polyfill',
 
@@ -18,7 +18,7 @@ const config = {
             'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr', // bundle the client for webpack-hot-middleware and connect to the provided endpoint
             // 'webpack/hot/only-dev-server', // bundle the client for hot reloading. only- means to only hot reload for successful updates
 
-            './src/index.js',
+            './src/main.js',
         ],
 
     resolve: {

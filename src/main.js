@@ -1,7 +1,7 @@
 import {AppContainer} from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './views/App';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './assets/styles/styles.css';
@@ -17,4 +17,4 @@ const render = (Component) =>
 
 render(App);
 
-module.hot && module.hot.accept('./App', () => render(App));
+module.hot && module.hot.accept('./views/App', () => render(App));
