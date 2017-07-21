@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import Layout from './Layout';
-import Counter from './Counter';
 import Footer from "./views/Footer";
 import Header from "./views/Header";
 import Home from "./views/Home";

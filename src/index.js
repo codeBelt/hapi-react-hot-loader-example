@@ -4,9 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './styles/styles.css';
-
-// https://v4-alpha.getbootstrap.com/examples/
+import './assets/styles/styles.css';
 
 const rootEl = document.getElementById('root');
 const render = (Component) =>
