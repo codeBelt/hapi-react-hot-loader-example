@@ -30,7 +30,7 @@ const config = {
         filename: isProduction
             ? 'assets/scripts/[name].[chunkhash].js'
             : 'main.js',
-        // publicPath: path.resolve(__dirname, 'dist') // necessary for HMR to know where to load the hot update chunks
+        // publicPath: '/', // necessary for HMR to know where to load the hot update chunks
     },
 
     module: {
