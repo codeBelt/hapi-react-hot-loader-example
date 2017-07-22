@@ -31,8 +31,8 @@ server.route({
             if (err) throw err;
 
             let html = data.replace('{title}', 'Test Title');
-            html = html.replace('{content}', 'renderedHtml');
-            html = html.replace('{state}',  '"stateStringified"');
+            html = html.replace('{content}', '<div>Test</div>');
+            html = html.replace('{state}',  JSON.stringify({}));
 
             return reply(html);
         });
