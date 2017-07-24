@@ -54,11 +54,9 @@ const mapStateToProps = (state) => ({
     count: state.counterReducer.count
 });
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        increaseCount: () => dispatch(CounterAction.increaseCount())
-    }
-};
+const mapDispatchToProps = (dispatch) => ({
+    increaseCount: () => dispatch(CounterAction.increaseCount())
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
