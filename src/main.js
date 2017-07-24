@@ -26,12 +26,6 @@ render(ProviderWrapper);
 
 if (module.hot) {
     module.hot.accept('./views/ProviderWrapper', () => render(ProviderWrapper));
-
-    module.hot.accept('./reducers/rootReducer', () => {
-        const nextReducer = require('./reducers/rootReducer');
-
-        store.replaceReducer(nextReducer);
-    });
 }
 
 // import 'babel-polyfill';
