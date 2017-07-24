@@ -18,7 +18,7 @@ class CounterReducer {
     static _increaseCount(state, action) {
         return {
             ...state,
-            count: action.payload,
+            count: state.count + 1,
         };
     }
 

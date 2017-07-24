@@ -12,6 +12,8 @@ const rootEl = document.getElementById('root');
 const initialState = window['__STATE__'];
 const store = ProviderService.createProviderStore(initialState);
 
+delete window['__STATE__'];
+
 const render = (Component) =>
     ReactDOM.render(
         <AppContainer>
