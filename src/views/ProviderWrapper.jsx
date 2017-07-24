@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import { StaticRouter } from 'react-router';
+import {StaticRouter} from 'react-router';
 import About from "./About";
 import Home from "./Home";
 import Contact from "./Contact";

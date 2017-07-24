@@ -2,6 +2,7 @@ import * as React from 'react';
 import {NavLink} from 'react-router-dom';
 
 class Header extends React.Component {
+
     render() {
         return (
             <div className="header clearfix">
@@ -41,6 +42,7 @@ class Header extends React.Component {
             </div>
         );
     }
+
 }
 
 export default Header;

@@ -1,10 +1,16 @@
-import React from 'react';
+import * as React from 'react';
 
-export default function Layout({children}) {
-    return (
-        <div>
-            <h1>Hellos, sdf!</h1>
-            {children}
-        </div>
-    );
+class Layout extends React.PureComponent {
+
+    render() {
+        return (
+            <div>
+                <h1>{'Hellos, sdf!'}</h1>
+                {this.props.children}
+            </div>
+        );
+    }
+
 }
+
+export default Layout;
