@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Boilerplate for React Hot Loading with Hapi Server-side rendering",
   "scripts": {
+    "predev": "cross-env rimraf dist",
     "dev": "cross-env NODE_ENV=development node ./server.js",
     "prebuild": "cross-env rimraf dist",
     "build": "cross-env NODE_ENV=production webpack -p",
@@ -40,6 +41,7 @@
     "eslint-plugin-react": "^7.1.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^2.29.0",
+    "node-notifier": "^5.1.2",
     "progress-bar-webpack-plugin": "^1.10.0",
     "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
