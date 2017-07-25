@@ -1,6 +1,7 @@
 const Hapi = require('hapi');
 const fs = require('fs');
 const Webpack = require('webpack');
+const inert = require('inert');
 
 const env = process.env.NODE_ENV;
 const isProduction = (env === 'production');
@@ -10,14 +11,14 @@ server.connection({ port: 3000 });
 
 if (isProduction === false) {
     const WebpackPlugin = require('hapi-webpack-plugin');
-    const compiler = new Webpack(require('./webpack.config.js'));
+    const compiler = new Webpack(require('../webpack.config.js'));
 
     compiler.plugin('done', (stats) => {
         setTimeout(() => {
             console.log(`\n\nServer running at: ${server.info.protocol}://localhost:${server.info.port}\n`)
         }, 0);
 
-        const pkg = require('./package.json');
+        const pkg = require('../package.json');
         const notifier = require('node-notifier');
         const time = ((stats.endTime - stats.startTime) / 1000).toFixed(2);
 
@@ -49,12 +50,22 @@ if (isProduction === false) {
     });
 }
 
+server.register(inert);
+
+server.route({
+    method: 'GET',
+    path: '/assets/{file*}',
+    handler: function (request, reply) {
+        reply.file(__dirname + `${request.path}`);
+    }
+});
+
 server.route({
     method: 'GET',
     path: '/{route*}',
     handler: function (request, reply) {
         console.log(`isProduction`, isProduction);
-        fs.readFile(__dirname + '/src/index.html', 'utf8', (err, data) => {
+        fs.readFile(__dirname + '/index.html', 'utf8', (err, data) => {
             if (err) throw err;
 
             let html = data.replace('{title}', 'Test Title');
@@ -65,5 +76,6 @@ server.route({
         });
     }
 });
+
 
 server.start();

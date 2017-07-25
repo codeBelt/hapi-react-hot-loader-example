@@ -5,7 +5,6 @@ import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
 class ProviderService {
 
     static createProviderStore(initialState = {}, isServerSide = false) {
-
         const store = createStore(
             rootReducer,
             initialState,

@@ -1,12 +1,13 @@
 {
   "name": "hapi-react-hot-loader",
   "version": "1.0.0",
-  "description": "Boilerplate for React Hot Loading with Hapi Server-side rendering",
+  "description": "Simple React Hot Loading example with Hapi Server-side rendering",
   "scripts": {
-    "predev": "cross-env rimraf dist",
-    "dev": "cross-env NODE_ENV=development node ./server.js",
-    "prebuild": "cross-env rimraf dist",
-    "build": "cross-env NODE_ENV=production webpack -p",
+    "clean": "cross-env rimraf dist",
+    "dev": "cross-env npm run clean && NODE_ENV=development node ./dev/server.js",
+    "build": "cross-env npm run clean && NODE_ENV=production webpack -p && npm run copyserver",
+    "copyserver": "cross-env cpx src/server.js dist/",
+    "start": "cross-env npm run build && NODE_ENV=production node ./dist/server.js",
     "lint": "cross-env eslint src"
   },
   "repository": {
@@ -35,6 +36,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "copy-webpack-plugin": "^4.0.1",
+    "cpx": "^1.5.0",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
     "eslint": "^4.2.0",
@@ -54,6 +56,7 @@
     "bootstrap": "4.0.0-alpha.6",
     "hapi": "^16.5.0",
     "hapi-webpack-plugin": "^2.0.0",
+    "inert": "^4.2.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-hot-loader": "next",
