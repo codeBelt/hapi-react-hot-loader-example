@@ -6,4 +6,4 @@ Never do `yarn clean`.
 
 `yarn dev` (Development)
 
-`yarn build` (Production)
+`yarn build` (Production) or with server `yarn start`

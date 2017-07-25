@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
 const env = process.env.NODE_ENV;
 const isProduction = (env === 'production');
@@ -81,12 +82,11 @@ const config = {
             ? new webpack.optimize.CommonsChunkPlugin({name: 'manifest'})
             : null,
 
-        isProduction
-            ? new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, 'src/index.html'),
-                // minify: {collapseWhitespace: true, collapseInlineTagWhitespace: true},
-            })
-            : null,
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'src/index.html'),
+            minify: isProduction ? {collapseWhitespace: true, collapseInlineTagWhitespace: true} : false,
+        }),
+        new HtmlWebpackHarddiskPlugin(),
 
         new CopyWebpackPlugin([
             {

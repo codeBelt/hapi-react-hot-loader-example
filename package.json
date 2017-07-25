@@ -4,7 +4,7 @@
   "description": "Simple React Hot Loading example with Hapi Server-side rendering",
   "scripts": {
     "clean": "cross-env rimraf dist",
-    "dev": "cross-env npm run clean && NODE_ENV=development node ./dev/server.js",
+    "dev": "cross-env npm run clean && npm run copyserver && NODE_ENV=development node ./dist/server.js",
     "build": "cross-env npm run clean && NODE_ENV=production webpack -p && npm run copyserver",
     "copyserver": "cross-env cpx src/server.js dist/",
     "start": "cross-env npm run build && NODE_ENV=production node ./dist/server.js",
@@ -42,6 +42,7 @@
     "eslint": "^4.2.0",
     "eslint-plugin-react": "^7.1.0",
     "extract-text-webpack-plugin": "^2.1.0",
+    "html-webpack-harddisk-plugin": "^0.1.0",
     "html-webpack-plugin": "^2.29.0",
     "node-notifier": "^5.1.2",
     "progress-bar-webpack-plugin": "^1.10.0",

@@ -9,13 +9,19 @@ const isProduction = (env === 'production');
 const server = new Hapi.Server();
 server.connection({ port: 3000 });
 
+// TODO: clean up this file!
+
+const log = () => {
+    console.log(`\n\nServer running in ${env} mode at: ${server.info.protocol}://localhost:${server.info.port}\n`);
+};
+
 if (isProduction === false) {
     const WebpackPlugin = require('hapi-webpack-plugin');
     const compiler = new Webpack(require('../webpack.config.js'));
 
     compiler.plugin('done', (stats) => {
         setTimeout(() => {
-            console.log(`\n\nServer running at: ${server.info.protocol}://localhost:${server.info.port}\n`)
+            log();
         }, 0);
 
         const pkg = require('../package.json');
@@ -64,7 +70,6 @@ server.route({
     method: 'GET',
     path: '/{route*}',
     handler: function (request, reply) {
-        console.log(`isProduction`, isProduction);
         fs.readFile(__dirname + '/index.html', 'utf8', (err, data) => {
             if (err) throw err;
 
@@ -78,4 +83,6 @@ server.route({
 });
 
 
-server.start();
+server.start(() => {
+    isProduction && log();
+});
