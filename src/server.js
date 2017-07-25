@@ -62,7 +62,7 @@ server.route({
     method: 'GET',
     path: '/assets/{file*}',
     handler: function (request, reply) {
-        reply.file(__dirname + `${request.path}`);
+        reply.file(__dirname + `/public/${request.path}`);
     }
 });
 
@@ -70,7 +70,7 @@ server.route({
     method: 'GET',
     path: '/{route*}',
     handler: function (request, reply) {
-        fs.readFile(__dirname + '/index.html', 'utf8', (err, data) => {
+        fs.readFile(__dirname + '/public/index.html', 'utf8', (err, data) => {
             if (err) throw err;
 
             let html = data.replace('{title}', 'Test Title');

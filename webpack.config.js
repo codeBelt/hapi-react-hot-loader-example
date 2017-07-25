@@ -26,7 +26,7 @@ const config = {
     },
 
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, 'dist/public/'),
         filename: isProduction
             ? 'assets/scripts/[name].[chunkhash].js'
             : 'main.js',
