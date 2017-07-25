@@ -17,7 +17,6 @@ const config = {
 
             'react-hot-loader/patch', // activate HMR for React
             'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr', // bundle the client for webpack-hot-middleware and connect to the provided endpoint
-            // 'webpack/hot/only-dev-server', // bundle the client for hot reloading. only- means to only hot reload for successful updates
 
             './src/main.js',
         ],
@@ -31,7 +30,6 @@ const config = {
         filename: isProduction
             ? 'assets/scripts/[name].[chunkhash].js'
             : 'main.js',
-        // publicPath: '/', // necessary for HMR to know where to load the hot update chunks
     },
 
     module: {
