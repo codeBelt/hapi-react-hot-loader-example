@@ -13,7 +13,7 @@ const config = {
     entry: isProduction
         ? ['./src/main.js']
         : [
-            // 'babel-polyfill',
+            'babel-polyfill',
 
             'react-hot-loader/patch', // activate HMR for React
             'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr', // bundle the client for webpack-hot-middleware and connect to the provided endpoint
