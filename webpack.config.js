@@ -85,6 +85,7 @@ const config = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src/index.html'),
             minify: isProduction ? {collapseWhitespace: true, collapseInlineTagWhitespace: true} : false,
+            alwaysWriteToDisk: true,
         }),
         new HtmlWebpackHarddiskPlugin(),
 
