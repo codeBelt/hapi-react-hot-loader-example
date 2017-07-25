@@ -1,4 +1,4 @@
-# hapi-react-hot-loader
+# hapi-react-hot-loader (Work In Progress)
 
 Never do `yarn clean`.
 
