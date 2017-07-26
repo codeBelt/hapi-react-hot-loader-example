@@ -3,12 +3,23 @@
   "version": "1.0.0",
   "description": "Simple React Hot Loading example with Hapi Server-side rendering",
   "scripts": {
-    "clean": "cross-env rimraf dist",
-    "dev": "cross-env npm run clean && npm run copyserver && NODE_ENV=development node ./dist/server.js",
-    "build": "cross-env npm run clean && NODE_ENV=production webpack -p && npm run copyserver",
-    "copyserver": "cross-env cpx src/server.js dist/",
+    "---------- helpers ------------------------------------------------------------": "",
+    "remove": "cross-env rimraf dist",
+    "copyserver": "cross-env cpx 'src/**/*.{js,jsx}' dist",
+    "---------- development --------------------------------------------------------": "",
+    "predev": "cross-env npm run remove && npm run copyserver",
+    "dev": "cross-env npm run devServerWatch & npm run devserver",
+    "devserver": "cross-env NODE_ENV=development node ./dist/server.js",
+    "devServerWatch": "cross-env cpx 'src/**/*.{js,jsx}' dist --watch",
+    "---------- production ---------------------------------------------------------": "",
+    "build": "cross-env npm run remove && npm run prodServer && npm run copyserver",
+    "prodServer": "cross-env NODE_ENV=production webpack -p",
     "start": "cross-env npm run build && NODE_ENV=production node ./dist/server.js",
-    "lint": "cross-env eslint src"
+    "---------- testing ------------------------------------------------------------": "",
+    "test": "cross-env npm run lint && npm run unit",
+    "lint": "cross-env eslint src",
+    "unit": "cross-env jest",
+    "-------------------------------------------------------------------------------": ""
   },
   "repository": {
     "type": "git",
