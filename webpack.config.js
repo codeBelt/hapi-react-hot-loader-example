@@ -52,7 +52,7 @@ const config = {
         new ProgressBarPlugin(),
 
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(env)
+            'process.env.NODE_ENV': JSON.stringify(env || 'development')
         }),
 
         isProduction

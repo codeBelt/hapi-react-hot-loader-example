@@ -19,6 +19,7 @@
     "test": "cross-env npm run lint && npm run unit",
     "lint": "cross-env eslint src",
     "unit": "cross-env jest",
+    "asdf": "./node_modules/.bin/babel src --out-dir asdf --presets es2015,stage-2 -d ",
     "-------------------------------------------------------------------------------": ""
   },
   "repository": {
@@ -40,6 +41,7 @@
   "author": "codeBelt",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "6.24.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.1",
@@ -66,6 +68,7 @@
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "bootstrap": "4.0.0-alpha.6",
+    "fetch-everywhere": "1.0.5",
     "hapi": "^16.5.0",
     "hapi-webpack-plugin": "^2.0.0",
     "inert": "^4.2.1",

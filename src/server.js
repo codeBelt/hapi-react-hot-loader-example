@@ -3,17 +3,29 @@ const fs = require('fs');
 const Webpack = require('webpack');
 const inert = require('inert');
 
-const env = process.env.NODE_ENV;
-const isProduction = (env === 'production');
+
+require('fetch-everywhere');
+const ServerManager = require('./server-side/ServerManager');
+const AssetsController = require('./server-side/controllers/AssetsController');
+const ReactController = require('./server-side/controllers/ReactController');
+
+const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || 'localhost';
+const NODE_ENV = process.env.NODE_ENV;
+const isProduction = (NODE_ENV === 'production');
+const log = () => console.log(`\n\nServer running in ${NODE_ENV} mode at: ${HOST}://localhost:${PORT}\n`);
+
+const manager = new ServerManager(HOST, PORT);
+//
+// manager.registerController(new AssetsController());
+// manager.registerController(new ReactController());
+// manager.startServer();
+
 
 const server = new Hapi.Server();
-server.connection({ port: 3000 });
+server.connection({ port: PORT });
 
 // TODO: clean up this file!
-
-const log = () => {
-    console.log(`\n\nServer running in ${env} mode at: ${server.info.protocol}://localhost:${server.info.port}\n`);
-};
 
 if (isProduction === false) {
     const WebpackPlugin = require('hapi-webpack-plugin');
