@@ -1,10 +1,33 @@
 {
-  "presets": [
-    ["es2015", {"modules": false}],
-    "stage-2",
-    "react"
-  ],
-  "plugins": [
-    "react-hot-loader/babel"
-  ]
+  "env": {
+    // jest doesn't take account of BABEL_ENV, you need to set NODE_ENV - https://facebook.github.io/jest/docs/getting-started.html#using-babel
+    "development": {
+      "presets": [
+        ["es2015", {"modules": false}],
+        "stage-2",
+        "react"
+      ],
+      "plugins": [
+        "react-hot-loader/babel"
+      ]
+    },
+    "server": {
+      "presets": [
+        "stage-2",
+        "react",
+        ["env", {
+          "targets": {
+            "node": "8.2.0"
+          }
+        }]
+      ],
+      "plugins": [
+        "transform-class-properties",
+        "transform-object-rest-spread"
+      ],
+      "ignore": [
+        "main.js"
+      ]
+    }
+  }
 }

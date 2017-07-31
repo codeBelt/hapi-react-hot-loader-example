@@ -2,7 +2,7 @@ import {renderToString, renderToStaticMarkup} from 'react-dom/server';
 import * as fse from 'fs-extra';
 import * as React from 'react';
 import ProviderWrapper from '../../views/ProviderWrapper';
-import ProviderFactory from '../../services/ProviderFactory';
+import ProviderService from '../../services/ProviderService';
 import rootSaga from '../../sagas/rootSaga';
 
 class ReactController {
@@ -13,7 +13,7 @@ class ReactController {
             path: '/{route*}',
 
             handler: (request, reply) => {
-                const store = ProviderFactory.createProviderStore({}, true);
+                const store = ProviderService.createProviderStore({}, true);
                 const context = {};
                 const app = (
                     <ProviderWrapper

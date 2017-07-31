@@ -1,21 +1,21 @@
-const Hapi = require('hapi');
-const fs = require('fs');
-const Webpack = require('webpack');
-const inert = require('inert');
+import Hapi from 'hapi';
+import fs from 'fs';
+import Webpack from 'webpack';
+import inert from 'inert';
 
 
 require('fetch-everywhere');
-const ServerManager = require('./server-side/ServerManager');
-const AssetsController = require('./server-side/controllers/AssetsController');
-const ReactController = require('./server-side/controllers/ReactController');
+import ServerManager from './server-side/ServerManager';
+import AssetsController from './server-side/controllers/AssetsController';
+import ReactController from './server-side/controllers/ReactController';
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 const NODE_ENV = process.env.NODE_ENV;
 const isProduction = (NODE_ENV === 'production');
-const log = () => console.log(`\n\nServer running in ${NODE_ENV} mode at: ${HOST}://localhost:${PORT}\n`);
+const log = () => console.log(`\n\nServer running in ${NODE_ENV} mode at: http://${HOST}:${PORT}\n`);
 
-const manager = new ServerManager(HOST, PORT);
+// const manager = new ServerManager(HOST, PORT);
 //
 // manager.registerController(new AssetsController());
 // manager.registerController(new ReactController());
@@ -82,6 +82,7 @@ server.route({
     method: 'GET',
     path: '/{route*}',
     handler: function (request, reply) {
+        console.log(`dsss`);
         fs.readFile(__dirname + '/public/index.html', 'utf8', (err, data) => {
             if (err) throw err;
 
