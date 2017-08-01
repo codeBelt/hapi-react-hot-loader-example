@@ -1,6 +1,5 @@
 {
   "watch": [
-    "./src/server.js",
     "./src/server-side"
   ],
   "ext": "js jsx",

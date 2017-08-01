@@ -1,10 +1,8 @@
+import 'fetch-everywhere';
 import Hapi from 'hapi';
 import fs from 'fs';
 import Webpack from 'webpack';
 import inert from 'inert';
-
-
-require('fetch-everywhere');
 import ServerManager from './server-side/ServerManager';
 import AssetsController from './server-side/controllers/AssetsController';
 import ReactController from './server-side/controllers/ReactController';
@@ -82,7 +80,6 @@ server.route({
     method: 'GET',
     path: '/{route*}',
     handler: function (request, reply) {
-        console.log(`dsss`);
         fs.readFile(__dirname + '/public/index.html', 'utf8', (err, data) => {
             if (err) throw err;
 
