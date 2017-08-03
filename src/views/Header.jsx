@@ -38,7 +38,7 @@ class Header extends React.Component {
                         </li>
                     </ul>
                 </nav>
-                <h3 className="text-muted">Project name</h3>
+                <h3 className="text-muted">{'Star My Repo On Github'}</h3>
             </div>
         );
     }
