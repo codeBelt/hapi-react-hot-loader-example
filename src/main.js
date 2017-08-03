@@ -27,7 +27,3 @@ render(ProviderWrapper);
 if (module.hot) {
     module.hot.accept('./views/ProviderWrapper', () => render(ProviderWrapper));
 }
-
-// import 'babel-polyfill';
-// https://gist.github.com/markerikson/dc6cee36b5b6f8d718f2e24a249e0491
-// https://github.com/glenjamin/ultimate-hot-reloading-example/blob/master/client/server-render.js
