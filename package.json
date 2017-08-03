@@ -6,7 +6,7 @@
     "---------- HELPERS ------------------------------------------------------------": "",
     "remove": "cross-env rimraf dist",
     "buildServer": "cross-env BABEL_ENV=server ./node_modules/.bin/babel src --out-dir dist",
-    "watchServer": "cross-env BABEL_ENV=server babel-watch src/*/** --out-dir dist",
+    "watchServer": "cross-env BABEL_ENV=server ./node_modules/.bin/babel src --out-dir dist --watch",
     "---------- DEVELOPMENT --------------------------------------------------------": "",
     "predev": "cross-env npm run remove && npm run buildServer",
     "dev": "cross-env npm run watchServer & npm run devServer",

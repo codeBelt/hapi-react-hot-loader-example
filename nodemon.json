@@ -1,7 +1,4 @@
 {
-  "watch": [
-    "./src/server-side"
-  ],
-  "ext": "js jsx",
-  "verbose": false
+  "watch": false,
+  "verbose": true
 }
