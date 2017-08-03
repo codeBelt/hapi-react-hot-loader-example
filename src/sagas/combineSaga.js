@@ -1,5 +1,5 @@
 import {all} from 'redux-saga/effects';
 
-export default function *rootSaga() {
+export default function *combineSaga() {
     yield all([]);
 }

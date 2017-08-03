@@ -4,7 +4,7 @@ import * as fse from 'fs-extra';
 import * as React from 'react';
 import ProviderWrapper from '../../views/ProviderWrapper';
 import ProviderService from '../../services/ProviderService';
-import rootSaga from '../../sagas/rootSaga';
+import combineSaga from '../../sagas/combineSaga';
 
 class ReactController {
 
@@ -24,7 +24,7 @@ class ReactController {
                     />
                 );
 
-                store.runSaga(rootSaga).done.then(async () => {
+                store.runSaga(combineSaga).done.then(async () => {
                     const renderedHtml = renderToString(app);
                     const stateStringified = JSON.stringify(store.getState());
 
