@@ -6,8 +6,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
-const env = process.env.NODE_ENV;
-const isProduction = (env === 'production');
+const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || 'localhost';
+const NODE_ENV = process.env.NODE_ENV;
+const isProduction = (NODE_ENV === 'production');
 
 const config = {
     entry: isProduction
@@ -19,7 +21,7 @@ const config = {
             'babel-polyfill',
 
             'react-hot-loader/patch', // activate HMR for React
-            'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr', // bundle the client for webpack-hot-middleware and connect to the provided endpoint
+            `webpack-hot-middleware/client?path=http://${HOST}:${PORT}/__webpack_hmr`, // bundle the client for webpack-hot-middleware and connect to the provided endpoint
 
             './src/main.js',
         ],
@@ -55,7 +57,7 @@ const config = {
         new ProgressBarPlugin(),
 
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(env || 'development')
+            'process.env.NODE_ENV': JSON.stringify(NODE_ENV || 'development')
         }),
 
         isProduction
