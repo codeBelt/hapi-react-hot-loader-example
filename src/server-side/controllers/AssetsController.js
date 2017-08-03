@@ -1,3 +1,5 @@
+import path from 'path';
+
 class AssetsController {
 
     mapRoutes(server) {
@@ -5,7 +7,7 @@ class AssetsController {
             method: 'GET',
             path: '/assets/{file*}',
             handler: (request, reply) => {
-                reply.file(__dirname + `/public${request.path}`);
+                reply.file(path.resolve(__dirname, `../../public${request.path}`));
             },
         });
     }
