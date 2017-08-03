@@ -11,7 +11,10 @@ const isProduction = (env === 'production');
 
 const config = {
     entry: isProduction
-        ? ['./src/main.js']
+        ? [
+            'babel-polyfill',
+            './src/main.js'
+        ]
         : [
             'babel-polyfill',
 
