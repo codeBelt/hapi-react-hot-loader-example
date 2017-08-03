@@ -13,16 +13,13 @@ class ReactController {
         server.route({
             method: 'GET',
             path: '/{route*}',
-            handler: function (request, reply) {
-                fs.readFile(path.resolve(__dirname, '../../public/index.html'), 'utf8', (err, data) => {
-                    if (err) throw err;
+            handler: async (request, reply) => {
+                let html = await fse.readFile(path.resolve(__dirname, '../../public/index.html'), 'utf8');
+                html = html.replace('{title}', 'Test Title');
+                html = html.replace('{content}', '<div>Test</div>');
+                html = html.replace('{state}',  JSON.stringify({}));
 
-                    let html = data.replace('{title}', 'Test Title');
-                    html = html.replace('{content}', '<div>Test</div>');
-                    html = html.replace('{state}',  JSON.stringify({}));
-
-                    return reply(html);
-                });
+                return reply(html);
             }
 
             // handler: (request, reply) => {
