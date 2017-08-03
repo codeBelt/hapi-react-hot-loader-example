@@ -4,7 +4,7 @@ import * as fse from 'fs-extra';
 import * as React from 'react';
 import ProviderWrapper from '../../views/ProviderWrapper';
 import ProviderService from '../../services/ProviderService';
-import combineSaga from '../../sagas/combineSaga';
+import combineSaga from '../../store/combineSaga';
 
 class ReactController {
 

@@ -1,4 +1,4 @@
-import CounterAction from '../actions/CounterAction';
+import CounterAction from './CounterAction';
 
 class CounterReducer {
 

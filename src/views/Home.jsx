@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import CounterAction from '../actions/CounterAction';
+import CounterAction from '../store/counter/CounterAction';
 
 class Home extends React.Component {
 

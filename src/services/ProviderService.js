@@ -1,8 +1,8 @@
 import {createStore, applyMiddleware} from 'redux';
-import combineReducer from '../reducers/combineReducer';
+import combineReducer from '../store/combineReducer';
 import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
 import createSagaMiddleware, {END} from 'redux-saga';
-import combineSaga from '../sagas/combineSaga';
+import combineSaga from '../store/combineSaga';
 
 class ProviderService {
 
@@ -31,8 +31,8 @@ class ProviderService {
 
     static _setupHotReloading(store) {
         if (module.hot) {
-            module.hot.accept('../reducers/combineReducer', () => {
-                const nextReducer = require('../reducers/combineReducer').default;
+            module.hot.accept('../store/combineReducer', () => {
+                const nextReducer = require('../store/combineReducer').default;
 
                 store.replaceReducer(nextReducer);
             });
