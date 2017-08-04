@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import CounterReducer from './counter/CounterReducer';
+import UserReducer from './user/UserReducer';
 
 const combineReducer = combineReducers({
-    counterReducer: CounterReducer.reduce,
+    userReducer: UserReducer.reduce,
 });
 
 export default combineReducer;

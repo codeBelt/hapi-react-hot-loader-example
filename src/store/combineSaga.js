@@ -1,7 +1,10 @@
-import {all} from 'redux-saga/effects';
+import {all, fork, takeLatest} from 'redux-saga/effects';
+import UserSaga from './user/UserSaga';
+import UserAction from './user/UserAction';
 
 export default function *combineSaga() {
     yield all([
-        // https://randomuser.me/
+        fork(UserSaga.loadUser),
+        takeLatest(UserAction.LOAD_USER, UserSaga.loadUser),
     ]);
 }

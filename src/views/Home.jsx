@@ -1,22 +1,28 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import CounterAction from '../store/counter/CounterAction';
+import UserAction from '../store/user/UserAction';
 
 class Home extends React.Component {
 
     render() {
+        const user = this.props.user;
+
         return (
             <div>
                 <div className="jumbotron">
-                    <h1 className="display-3">{'Jumbotron heading'}</h1>
-                    <p className="lead">{'Current count:'} {this.props.count}</p>
+                    <h1 className="display-3">{user.name.title} {user.name.first} {user.name.last}</h1>
+                    <img
+                        className="rounded mx-auto d-block"
+                        src={user.picture.large}
+                        alt="Users Photo"
+                    />
                     <p>
                         <button
                             className="btn btn-lg btn-success"
                             role="button"
-                            onClick={this.props.increaseCount}
+                            onClick={this.props.loadUser}
                         >
-                            {'Increase Count'}
+                            {'Load Another User'}
                         </button>
                     </p>
                 </div>
@@ -51,11 +57,11 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    count: state.counterReducer.count
+    user: state.userReducer
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    increaseCount: () => dispatch(CounterAction.increaseCount())
+    loadUser: () => dispatch(UserAction.loadUser())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
