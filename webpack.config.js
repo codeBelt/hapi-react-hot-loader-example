@@ -73,7 +73,7 @@ const config = {
         new ExtractTextPlugin({
             filename: isProduction
                 ? 'assets/styles/[name].[chunkhash].css'
-                : 'assets/styles/[name].css'
+                : 'assets/styles/main.css'
         }),
 
         isProduction
