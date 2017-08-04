@@ -41,9 +41,9 @@ const config = {
         rules: [
             {
                 test: /\.css$/,
-                use: isProduction
-                    ? ExtractTextPlugin.extract({fallback: 'style-loader', use: ['css-loader']})
-                    : ['style-loader', 'css-loader']
+                use: ['css-hot-loader'].concat(
+                    ExtractTextPlugin.extract({fallback: 'style-loader', use: ['css-loader']})
+                ),
             },
             {
                 test: /\.jsx?$/,
@@ -70,9 +70,11 @@ const config = {
             ? null
             : new webpack.NoEmitOnErrorsPlugin(), // do not emit compiled assets that include errors
 
-        isProduction
-            ? new ExtractTextPlugin({filename: "assets/styles/[name].[chunkhash].css"})
-            : null,
+        new ExtractTextPlugin({
+            filename: isProduction
+                ? 'assets/styles/[name].[chunkhash].css'
+                : 'assets/styles/[name].css'
+        }),
 
         isProduction
             ? new webpack.optimize.CommonsChunkPlugin({
