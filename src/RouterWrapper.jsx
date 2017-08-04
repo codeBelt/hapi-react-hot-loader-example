@@ -5,10 +5,10 @@ import {StaticRouter} from 'react-router';
 import About from "./views/About";
 import Home from "./views/Home";
 import Contact from "./views/Contact";
-import Footer from "./views/Footer";
-import Header from "./views/Header";
+import Footer from "./views/landmarks/Footer";
+import Header from "./views/landmarks/Header";
 
-const ProviderWrapper = (props) => {
+const RouterWrapper = (props) => {
     const Router = props.isServerSide ? StaticRouter : BrowserRouter;
 
     return (
@@ -41,4 +41,4 @@ const ProviderWrapper = (props) => {
     );
 };
 
-export default ProviderWrapper;
+export default RouterWrapper;

@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import './assets/styles/styles.css';
 
-import ProviderWrapper from './ProviderWrapper';
+import RouterWrapper from './RouterWrapper';
 import ProviderService from './services/ProviderService';
 
 const rootEl = document.getElementById('root');
@@ -22,8 +22,8 @@ const render = (Component) =>
         rootEl
     );
 
-render(ProviderWrapper);
+render(RouterWrapper);
 
 if (module.hot) {
-    module.hot.accept('./ProviderWrapper', () => render(ProviderWrapper));
+    module.hot.accept('./RouterWrapper', () => render(RouterWrapper));
 }

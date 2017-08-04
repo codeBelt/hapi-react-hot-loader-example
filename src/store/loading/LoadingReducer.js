@@ -8,17 +8,17 @@ class LoadingReducer {
 
     static reduce(state = LoadingReducer._initialState, action) {
         switch (action.type) {
-            case LoadingAction.LOAD_USER_SUCCESS:
-                return LoadingReducer._loadLoading(state, action);
+            case LoadingAction.SET_LOADING:
+                return LoadingReducer._setLoading(state, action);
             default:
                 return state;
         }
     }
 
-    static _loadLoading(state, action) {
+    static _setLoading(state, action) {
         return {
             ...state,
-            ...action.payload,
+            isLoading: action.payload,
         };
     }
 
