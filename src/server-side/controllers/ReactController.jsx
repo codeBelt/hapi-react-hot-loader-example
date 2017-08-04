@@ -30,8 +30,8 @@ class ReactController {
                     const stateStringified = JSON.stringify(state);
 
                     let html = await fse.readFile(path.resolve(__dirname, '../../public/index.html'), 'utf8');
-                    // html = html.replace('{title}', state.metaReducer.title);
-                    // html = html.replace('{description}', state.metaReducer.description);
+                    html = html.replace('{title}', state.metaReducer.title);
+                    html = html.replace('{description}', state.metaReducer.description);
                     html = html.replace('{content}', renderedHtml);
                     html = html.replace('{state}',  stateStringified);
 
