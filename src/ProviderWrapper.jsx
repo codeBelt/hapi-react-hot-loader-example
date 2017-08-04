@@ -2,11 +2,11 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {StaticRouter} from 'react-router';
-import About from "./About";
-import Home from "./Home";
-import Contact from "./Contact";
-import Footer from "./Footer";
-import Header from "./Header";
+import About from "./views/About";
+import Home from "./views/Home";
+import Contact from "./views/Contact";
+import Footer from "./views/Footer";
+import Header from "./views/Header";
 
 const ProviderWrapper = (props) => {
     const Router = props.isServerSide ? StaticRouter : BrowserRouter;

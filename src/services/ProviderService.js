@@ -1,8 +1,8 @@
 import {createStore, applyMiddleware} from 'redux';
-import combineReducer from '../store/combineReducer';
+import rootReducer from '../store/rootReducer';
 import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
 import createSagaMiddleware, {END} from 'redux-saga';
-import combineSaga from '../store/combineSaga';
+import rootSaga from '../store/rootSaga';
 
 class ProviderService {
 
@@ -10,7 +10,7 @@ class ProviderService {
         const sagaMiddleware = createSagaMiddleware();
 
         const store = createStore(
-            combineReducer,
+            rootReducer,
             initialState,
             composeWithDevTools(applyMiddleware(sagaMiddleware))
         );
@@ -19,7 +19,7 @@ class ProviderService {
             store.runSaga = sagaMiddleware.run;
             store.endSaga = () => store.dispatch(END);
         } else {
-            sagaMiddleware.run(combineSaga);
+            sagaMiddleware.run(rootSaga);
         }
 
         // Saga reloading https://gist.github.com/markerikson/dc6cee36b5b6f8d718f2e24a249e0491
@@ -31,8 +31,8 @@ class ProviderService {
 
     static _setupHotReloading(store) {
         if (module.hot) {
-            module.hot.accept('../store/combineReducer', () => {
-                const nextReducer = require('../store/combineReducer').default;
+            module.hot.accept('../store/rootReducer', () => {
+                const nextReducer = require('../store/rootReducer').default;
 
                 store.replaceReducer(nextReducer);
             });

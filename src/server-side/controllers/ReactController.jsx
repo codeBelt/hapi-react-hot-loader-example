@@ -2,9 +2,9 @@ import {renderToString, renderToStaticMarkup} from 'react-dom/server';
 import path from 'path';
 import * as fse from 'fs-extra';
 import * as React from 'react';
-import ProviderWrapper from '../../views/ProviderWrapper';
+import ProviderWrapper from '../../ProviderWrapper';
 import ProviderService from '../../services/ProviderService';
-import combineSaga from '../../store/combineSaga';
+import rootSaga from '../../store/rootSaga';
 
 class ReactController {
 
@@ -24,7 +24,7 @@ class ReactController {
                     />
                 );
 
-                store.runSaga(combineSaga).done.then(async () => {
+                store.runSaga(rootSaga).done.then(async () => {
                     const renderedHtml = renderToString(app);
                     const stateStringified = JSON.stringify(store.getState());
 
