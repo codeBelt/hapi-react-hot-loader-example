@@ -1,6 +1,6 @@
 import {put, call} from 'redux-saga/effects';
 import UserAction from './UserAction';
-import LoadingAction from '../loading/LoadingActionn';
+import LoadingAction from '../loading/LoadingAction';
 
 class UserSaga {
 
