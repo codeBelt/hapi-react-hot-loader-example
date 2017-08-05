@@ -13,8 +13,57 @@ class Contact extends React.Component {
             <div>
                 <div className="jumbotron">
                     <h1 className="display-3">{'Contact'}</h1>
-                    <p className="lead">{'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'}</p>
+                    <p className="lead">{'This contact form uses redux-form to do client-side validation.'}</p>
                 </div>
+                <form>
+                    <div className="form-group">
+                        <label for="emailInput">Email</label>
+                        <input type="email" className="form-control" id="emailInput" placeholder="Enter email" />
+                        <small id="emailHelp" className="form-text text-muted">{'We\'ll never share your email with anyone else.'}</small>
+                    </div>
+                    <div className="form-group">
+                        <label for="exampleSelect1">{'Example select'}</label>
+                        <select className="form-control" id="exampleSelect1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label for="messageTextArea">{'Message'}</label>
+                        <textarea className="form-control" id="messageTextArea" rows="3"></textarea>
+                    </div>
+                    <fieldset className="form-group">
+                        <legend>Radio buttons</legend>
+                        <div className="form-check">
+                            <label className="form-check-label">
+                                <input type="radio" className="form-check-input" name="codeQualityRadio" id="codeQualityRadio1" value="option1" checked />
+                                {'This code is awesome!'}
+                            </label>
+                        </div>
+                        <div className="form-check">
+                            <label className="form-check-label">
+                                <input type="radio" className="form-check-input" name="codeQualityRadio" id="codeQualityRadio2" value="option2" />
+                                {'This code is ok.'}
+                            </label>
+                        </div>
+                        <div className="form-check disabled">
+                            <label className="form-check-label">
+                                <input type="radio" className="form-check-input" name="codeQualityRadio" id="codeQualityRadio3" value="option3" disabled />
+                                {'This code is bad'}
+                            </label>
+                        </div>
+                    </fieldset>
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input type="checkbox" className="form-check-input" />
+                            {'Did you star my repo?'}
+                        </label>
+                    </div>
+                    <button type="submit" className="btn btn-primary">{'Submit'}</button>
+                </form>
             </div>
         );
     }
