@@ -2,9 +2,9 @@ import {renderToString, renderToStaticMarkup} from 'react-dom/server';
 import path from 'path';
 import * as fse from 'fs-extra';
 import * as React from 'react';
-import ProviderWrapper from '../../views/ProviderWrapper';
+import RouterWrapper from '../../RouterWrapper';
 import ProviderService from '../../services/ProviderService';
-import combineSaga from '../../sagas/combineSaga';
+import rootSaga from '../../store/rootSaga';
 
 class ReactController {
 
@@ -16,7 +16,7 @@ class ReactController {
                 const store = ProviderService.createProviderStore({}, true);
                 const context = {};
                 const app = (
-                    <ProviderWrapper
+                    <RouterWrapper
                         store={store}
                         location={request.path}
                         context={context}
@@ -24,12 +24,14 @@ class ReactController {
                     />
                 );
 
-                store.runSaga(combineSaga).done.then(async () => {
+                store.runSaga(rootSaga).done.then(async () => {
                     const renderedHtml = renderToString(app);
-                    const stateStringified = JSON.stringify(store.getState());
+                    const state = store.getState();
+                    const stateStringified = JSON.stringify(state);
 
                     let html = await fse.readFile(path.resolve(__dirname, '../../public/index.html'), 'utf8');
-                    html = html.replace('{title}', 'Test Title');
+                    html = html.replace('{title}', state.metaReducer.title);
+                    html = html.replace('{description}', state.metaReducer.description);
                     html = html.replace('{content}', renderedHtml);
                     html = html.replace('{state}',  stateStringified);
 

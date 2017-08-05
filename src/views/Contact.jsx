@@ -1,6 +1,12 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
+import MetaAction from '../store/meta/MetaAction';
 
 class Contact extends React.Component {
+
+    componentWillMount() {
+        this.props.setMeta({title: 'Contact Page'});
+    }
 
     render() {
         return (
@@ -15,4 +21,10 @@ class Contact extends React.Component {
 
 }
 
-export default Contact;
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+    setMeta: (meta) => dispatch(MetaAction.setMeta(meta)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);

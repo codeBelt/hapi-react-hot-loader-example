@@ -27,6 +27,7 @@ class WebpackPlugin {
         const assets = {
             // webpack-dev-middleware options
             // See https://github.com/webpack/webpack-dev-middleware
+            index: '/public/index.html',
         };
 
         const hot = {
