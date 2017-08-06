@@ -11,7 +11,7 @@ class ServerManager {
 
     static log = () => console.log(`\n\nServer running in ${NODE_ENV} mode at: http://${HOST}:${PORT}\n`);
 
-    _server = new hapi.Server();
+    _server = new hapi.Server({ debug: { request: ['error'] } });
 
     constructor() {
         this._server.connection({
