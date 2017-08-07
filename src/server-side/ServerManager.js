@@ -1,11 +1,8 @@
 import * as hapi from 'hapi';
-import * as inert from 'inert';
-import WebpackPlugin from "./plugin/WebpackPlugin";
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 const NODE_ENV = process.env.NODE_ENV;
-const isProduction = (NODE_ENV === 'production');
 
 class ServerManager {
 
@@ -13,17 +10,17 @@ class ServerManager {
 
     _server = new hapi.Server();
 
+    isProduction = (NODE_ENV === 'production');
+
+    get server() {
+        return this._server;
+    };
+
     constructor() {
         this._server.connection({
             host: HOST,
             port: PORT,
         });
-
-        this.registerPlugin(inert);
-
-        if (isProduction === false) {
-            new WebpackPlugin(this._server);
-        }
     }
 
     async registerPlugin(pluginConfig) {
@@ -39,8 +36,7 @@ class ServerManager {
             if (error) {
                 throw error;
             }
-
-            isProduction && ServerManager.log();
+            this.isProduction && ServerManager.log();
         });
     }
 }
