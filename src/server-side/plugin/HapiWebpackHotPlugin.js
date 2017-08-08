@@ -1,10 +1,11 @@
 import Webpack from 'webpack';
-import ServerManager from "../ServerManager";
+import ServerManager from '../ServerManager';
+import HapiWebpackPlugin from 'hapi-webpack-plugin';
+import notifier from 'node-notifier';
 
 class WebpackPlugin {
 
     constructor(server) {
-        const WebpackPlugin = require('hapi-webpack-plugin');
         const compiler = new Webpack(require('../../../webpack.config.js'));
 
         compiler.plugin('done', (stats) => this._onDone(stats));
@@ -21,7 +22,7 @@ class WebpackPlugin {
         };
 
         server.register({
-            register: WebpackPlugin,
+            register: HapiWebpackPlugin,
             options
         }, error => {
             if (error) {
@@ -33,7 +34,6 @@ class WebpackPlugin {
 
     _onDone(stats) {
         const pkg = require('../../../package.json');
-        const notifier = require('node-notifier');
         const time = ((stats.endTime - stats.startTime) / 1000).toFixed(2);
 
         setTimeout(() => {
