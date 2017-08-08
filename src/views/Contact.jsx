@@ -2,6 +2,13 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import MetaAction from '../store/meta/MetaAction';
 
+
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+    setMeta: (meta) => dispatch(MetaAction.setMeta(meta)),
+});
+
 class Contact extends React.Component {
 
     componentWillMount() {
@@ -17,7 +24,7 @@ class Contact extends React.Component {
                 </div>
                 <form>
                     <div className="form-group">
-                        <label htmlFor="emailInput">Email</label>
+                        <label htmlFor="emailInput">{'Email'}</label>
                         <input type="email" className="form-control" id="emailInput" placeholder="Enter email" />
                         <small id="emailHelp" className="form-text text-muted">{'We\'ll never share your email with anyone else.'}</small>
                     </div>
@@ -36,7 +43,7 @@ class Contact extends React.Component {
                         <textarea className="form-control" id="messageTextArea" rows="3"></textarea>
                     </div>
                     <fieldset className="form-group">
-                        <legend>Radio buttons</legend>
+                        <legend>{'Radio buttons'}</legend>
                         <div className="form-check">
                             <label className="form-check-label">
                                 <input type="radio" className="form-check-input" name="codeQualityRadio" id="codeQualityRadio1" value="option1" defaultChecked />
@@ -69,11 +76,5 @@ class Contact extends React.Component {
     }
 
 }
-
-const mapStateToProps = (state) => ({});
-
-const mapDispatchToProps = (dispatch) => ({
-    setMeta: (meta) => dispatch(MetaAction.setMeta(meta)),
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contact);
