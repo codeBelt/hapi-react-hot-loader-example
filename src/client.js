@@ -9,7 +9,12 @@ import RouterWrapper from './RouterWrapper';
 import ProviderService from './services/ProviderService';
 
 const rootEl = document.getElementById('root');
-const initialState = window['__STATE__'];
+const initialState = {
+    ...window['__STATE__'],
+    renderReducer: {
+        isServerSide: false,
+    }
+};
 const store = ProviderService.createProviderStore(initialState);
 
 delete window['__STATE__'];

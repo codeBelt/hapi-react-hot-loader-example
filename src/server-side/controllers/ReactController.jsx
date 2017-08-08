@@ -27,13 +27,18 @@ class ReactController {
                 store.runSaga(rootSaga).done.then(async () => {
                     const renderedHtml = renderToString(app);
                     const state = store.getState();
-                    const stateStringified = JSON.stringify(state);
+                    const initialState = {
+                        ...state,
+                        renderReducer: {
+                            isServerSide: true,
+                        }
+                    };
 
                     let html = await fse.readFile(path.resolve(__dirname, '../../public/index.html'), 'utf8');
                     html = html.replace('{title}', state.metaReducer.title);
                     html = html.replace('{description}', state.metaReducer.description);
                     html = html.replace('{content}', renderedHtml);
-                    html = html.replace('{state}',  stateStringified);
+                    html = html.replace('{state}',  JSON.stringify(initialState));
 
                     // context.url will contain the URL to redirect to if a <Redirect> was used
                     if (context.url) {
