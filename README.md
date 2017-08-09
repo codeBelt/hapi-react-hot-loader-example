@@ -1,4 +1,4 @@
-# `hapi-react-hot-loader`
+# `hapi-react-hot-loader-example`
 Example application demonstrating react-hot-loader-3 with webpack-2, react and friends, and hapi.
 
 ## get started
