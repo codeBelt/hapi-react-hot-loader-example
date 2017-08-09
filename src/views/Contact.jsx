@@ -29,20 +29,20 @@ class Contact extends React.Component {
                 <form onSubmit={handleSubmit(this._handleSubmitHandler)}>
                     <div className="form-group">
                         <Field
-                            name="name"
-                            type="text"
-                            label="Name"
-                            placeholder=""
                             component={this._renderInputField}
+                            label="Name"
+                            name="name"
+                            placeholder=""
+                            type="text"
                         />
                     </div>
                     <div className="form-group">
                         <Field
-                            name="email"
-                            type="email"
-                            label="Email"
-                            placeholder="example@example.com"
                             component={this._renderInputField}
+                            label="Email"
+                            name="email"
+                            placeholder="example@example.com"
+                            type="email"
                         />
                         <small id="emailHelp" className="form-text text-muted">{'We\'ll never share your email with anyone else.'}</small>
                     </div>
@@ -58,39 +58,40 @@ class Contact extends React.Component {
                     </div>
                     <div className="form-group">
                         <Field
-                            name="message"
-                            label="Message"
-                            placeholder=""
                             component={this._renderTextArea}
+                            label="Message"
+                            name="message"
+                            placeholder=""
                         />
                     </div>
                     <fieldset className="form-group">
-                        <legend>{'Radio buttons'}</legend>
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input type="radio" className="form-check-input" name="codeQualityRadio" id="codeQualityRadio1" value="option1" defaultChecked />
-                                {'This code is awesome!'}
-                            </label>
-                        </div>
-                        <div className="form-check">
-                            <label className="form-check-label">
-                                <input type="radio" className="form-check-input" name="codeQualityRadio" id="codeQualityRadio2" value="option2" />
-                                {'This code is ok.'}
-                            </label>
-                        </div>
-                        <div className="form-check disabled">
-                            <label className="form-check-label">
-                                <input type="radio" className="form-check-input" name="codeQualityRadio" id="codeQualityRadio3" value="option3" disabled />
-                                {'This code is bad'}
-                            </label>
-                        </div>
+                        <legend>{'Code Quality'}</legend>
+
+                        <Field
+                            component={this._renderRadio}
+                            label="This code is awesome!"
+                            name="codeQualityRadio"
+                            option="1"
+                        />
+                        <Field
+                            component={this._renderRadio}
+                            label="This code is ok."
+                            name="codeQualityRadio"
+                            option="2"
+                        />
+                        <Field
+                            component={this._renderRadio}
+                            label="This code is bad."
+                            name="codeQualityRadio"
+                            option="3"
+                        />
                     </fieldset>
                     <div className="form-check">
                         <Field
+                            component={this._renderCheckbox}
                             label="Did you star my repo?"
                             name="starred"
                             type="checkbox"
-                            component={this._renderCheckbox}
                         />
                     </div>
                     <button type="submit" className="btn btn-primary">{'Submit'}</button>
@@ -137,6 +138,23 @@ class Contact extends React.Component {
                 />
                 {field.label}
             </label>
+        );
+    }
+
+    _renderRadio(field) {
+        return (
+            <div className="form-check">
+                <label className="form-check-label">
+                    <input
+                        {...field.input}
+                        type="radio"
+                        className="form-check-input"
+                        name={field.input.name}
+                        value={field.option}
+                    />
+                    {field.label}
+                </label>
+            </div>
         );
     }
 
