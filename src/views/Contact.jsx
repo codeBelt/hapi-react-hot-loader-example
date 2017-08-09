@@ -11,21 +11,39 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Contact extends React.Component {
 
+    _handleSubmitHandler = (formData) => this._onFormSubmit(formData);
+
     componentWillMount() {
         this.props.setMeta({title: 'Contact Page'});
     }
 
     render() {
+        const { handleSubmit } = this.props;
+
         return (
             <div>
                 <div className="jumbotron">
                     <h1 className="display-3">{'Contact'}</h1>
                     <p className="lead">{'This contact form uses redux-form to do client-side validation.'}</p>
                 </div>
-                <form>
+                <form onSubmit={handleSubmit(this._handleSubmitHandler)}>
                     <div className="form-group">
-                        <label htmlFor="emailInput">{'Email'}</label>
-                        <input type="email" className="form-control" id="emailInput" placeholder="Enter email" />
+                        <Field
+                            name="name"
+                            type="text"
+                            label="Name"
+                            placeholder="Enter name"
+                            component={this._renderInputField}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <Field
+                            name="email"
+                            type="email"
+                            label="Email"
+                            placeholder="Enter email"
+                            component={this._renderInputField}
+                        />
                         <small id="emailHelp" className="form-text text-muted">{'We\'ll never share your email with anyone else.'}</small>
                     </div>
                     <div className="form-group">
@@ -75,12 +93,93 @@ class Contact extends React.Component {
         );
     }
 
+    _onFormSubmit(formData){
+        // TODO: Can an acton with the form data.
+        console.log(formData);
+    }
+
+    _renderInputField(field) {
+        const {meta: {touched, error}} = field;
+        console.log(`touched, error`, touched, error);
+        const className = `small text-danger ${touched && error ? '' : 'd-none'}`;
+console.log(`className`, className);
+        return (
+            <span>
+                <label htmlFor={field.input.name}>
+                    {field.label} <span className={className}>{error}</span>
+                </label>
+                <input
+                    {...field.input}
+                    className="form-control"
+                    id={field.input.name}
+                    placeholder={field.placeholder}
+                    type={field.type}
+                />
+            </span>
+        );
+    }
+
+    _renderCheckbox(field) {
+        return (
+            <div className="inputForm-item-checkGroup">
+                <input
+                    {...field.input}
+                    className="u-isVisuallyHidden"
+                    type="checkbox"
+                />
+                <label htmlFor={field.input.name}>{'Notify Me for Special Offers!'}</label>
+            </div>
+        );
+    }
+
+    _renderTextArea(field) {
+        const { meta: { touched, error } } = field;
+        const className = `inputForm-area ${touched && error ? 'inputForm-warning' : ''}`;
+
+        return (
+            <div className="inputForm-item">
+                <label
+                    className="u-isVisuallyHidden"
+                    htmlFor={field.input.name}
+                >
+                    {field.label}
+                </label>
+                <textarea
+                    {...field.input}
+                    className={className}
+                    placeholder={field.placeholder}
+                />
+            </div>
+        );
+    }
+
 }
 
 Contact = connect(mapStateToProps, mapDispatchToProps)(Contact);
 
 export default reduxForm({
-    form: 'example' // a unique name for this form
+    form: 'contactForm',
+    validate: (formData) => {
+        const errors = {};
+
+        if (!formData.name) {
+            errors.name = 'Required';
+        }
+
+        if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formData.email)) {
+            errors.email = 'Invalid email address';
+        }
+
+        // if (!formData.phone) {
+        //     errors.phone = 'Required';
+        // }
+
+        // if (!formData.message) {
+        //     errors.message = 'Required';
+        // }
+
+        return errors;
+    },
 })(Contact);
 
 
@@ -90,10 +189,10 @@ export default reduxForm({
 // import INewsletter from '../../interfaces/reducers/INewsletter';
 //
 // interface INewsletterFormProps extends FormProps<INewsletter, void, void> {
-//     actions: any;
+//     actions;
 // }
 //
-// export const NEWSLETTER_FORM_NAME: string = 'newsletterForm';
+// export const NEWSLETTER_FORM_NAME = 'newsletterForm';
 //
 // class NewsletterForm extends React.Component<INewsletterFormProps, void> {
 //
@@ -160,9 +259,9 @@ export default reduxForm({
 //         );
 //     }
 //
-//     private _renderInputField(field: any): any {
+//     _renderInputField(field) {
 //         const { meta: { touched, error } } = field;
-//         const className: string = `inputForm-text ${touched && error ? 'inputForm-warning' : ''}`;
+//         const className = `inputForm-text ${touched && error ? 'inputForm-warning' : ''}`;
 //
 //         return (
 //             <div className="inputForm-item inputForm-item_half">
@@ -182,7 +281,7 @@ export default reduxForm({
 //         );
 //     }
 //
-//     private _renderCheckbox(field: any): any {
+//     _renderCheckbox(field) {
 //         return (
 //             <div className="inputForm-item-checkGroup">
 //                 <input
@@ -195,9 +294,9 @@ export default reduxForm({
 //         );
 //     }
 //
-//     private _renderTextArea(field: any): any {
+//     _renderTextArea(field) {
 //         const { meta: { touched, error } } = field;
-//         const className: string = `inputForm-area ${touched && error ? 'inputForm-warning' : ''}`;
+//         const className = `inputForm-area ${touched && error ? 'inputForm-warning' : ''}`;
 //
 //         return (
 //             <div className="inputForm-item">
@@ -216,7 +315,7 @@ export default reduxForm({
 //         );
 //     }
 //
-//     private _onFormSubmit(formData: INewsletter): void {
+//     _onFormSubmit(formData: INewsletter){
 //         this.props.actions.signUpForNewsletter(formData);
 //     }
 //
@@ -225,7 +324,7 @@ export default reduxForm({
 // export default reduxForm({
 //     form: NEWSLETTER_FORM_NAME,
 //     validate: (formData: INewsletter) => {
-//         const errors: any = {};
+//         const errors = {};
 //
 //         if (!formData.firstName) {
 //             errors.firstName = 'Required';
