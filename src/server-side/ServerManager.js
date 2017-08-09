@@ -8,7 +8,6 @@ class ServerManager {
 
     static log = () => console.log(`\n\nServer running in ${NODE_ENV} mode at: http://${HOST}:${PORT}\n`);
 
-
     _server = new Hapi.Server({debug: {request: ['error']}});
 
     isProduction = (NODE_ENV === 'production');
