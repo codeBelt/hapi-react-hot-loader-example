@@ -3,6 +3,15 @@ import {connect} from 'react-redux';
 import UserAction from '../store/user/UserAction';
 import MetaAction from '../store/meta/MetaAction';
 
+const mapStateToProps = (state) => ({
+    user: state.userReducer
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    loadUser: () => dispatch(UserAction.loadUser()),
+    setMeta: (meta) => dispatch(MetaAction.setMeta(meta)),
+});
+
 class Home extends React.Component {
 
     componentWillMount() {
@@ -39,15 +48,6 @@ class Home extends React.Component {
     }
 
 }
-
-const mapStateToProps = (state) => ({
-    user: state.userReducer
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    loadUser: () => dispatch(UserAction.loadUser()),
-    setMeta: (meta) => dispatch(MetaAction.setMeta(meta)),
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
 

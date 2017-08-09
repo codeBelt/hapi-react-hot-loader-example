@@ -2,6 +2,12 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import MetaAction from '../store/meta/MetaAction';
 
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+    setMeta: (meta) => dispatch(MetaAction.setMeta(meta)),
+});
+
 class About extends React.Component {
 
     componentWillMount() {
@@ -44,11 +50,5 @@ class About extends React.Component {
     }
 
 }
-
-const mapStateToProps = (state) => ({});
-
-const mapDispatchToProps = (dispatch) => ({
-    setMeta: (meta) => dispatch(MetaAction.setMeta(meta)),
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(About);
