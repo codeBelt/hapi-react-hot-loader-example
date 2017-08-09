@@ -1,4 +1,4 @@
-import * as hapi from 'hapi';
+import * as Hapi from 'hapi';
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -8,7 +8,8 @@ class ServerManager {
 
     static log = () => console.log(`\n\nServer running in ${NODE_ENV} mode at: http://${HOST}:${PORT}\n`);
 
-    _server = new hapi.Server();
+
+    _server = new Hapi.Server({debug: {request: ['error']}});
 
     isProduction = (NODE_ENV === 'production');
 
