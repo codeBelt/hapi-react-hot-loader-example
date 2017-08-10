@@ -5,7 +5,8 @@ class MetaAction {
     static setMeta(meta) {
         try {
             document.title = meta.title;
-        } catch (error) {}
+        } catch (error) {
+        }
 
         return {
             type: MetaAction.SET_META,

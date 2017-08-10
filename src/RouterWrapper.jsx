@@ -18,7 +18,7 @@ const RouterWrapper = (props) => {
                 location={props.location}
             >
                 <div className="container">
-                    <Header />
+                    <Header/>
                     <Switch>
                         <Route
                             exact
@@ -34,7 +34,7 @@ const RouterWrapper = (props) => {
                             component={Contact}
                         />
                     </Switch>
-                    <Footer />
+                    <Footer/>
                 </div>
             </Router>
         </Provider>

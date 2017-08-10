@@ -44,7 +44,12 @@ class Contact extends React.Component {
                             placeholder="example@example.com"
                             type="email"
                         />
-                        <small id="emailHelp" className="form-text text-muted">{'We\'ll never share your email with anyone else.'}</small>
+                        <small
+                            className="form-text text-muted"
+                            id="emailHelp"
+                        >
+                            {'We\'ll never share your email with anyone else.'}
+                        </small>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleSelect1">{'Example select'}</label>
@@ -118,7 +123,7 @@ class Contact extends React.Component {
         );
     }
 
-    _onFormSubmit(formData){
+    _onFormSubmit(formData) {
         console.log(formData);
 
         window.alert(JSON.stringify(formData, null, 2));
@@ -180,7 +185,7 @@ class Contact extends React.Component {
     }
 
     _renderTextArea(field) {
-        const { meta: { touched, error } } = field;
+        const {meta: {touched, error}} = field;
         const className = `small text-danger ${touched && error ? '' : 'd-none'}`;
 
         return (

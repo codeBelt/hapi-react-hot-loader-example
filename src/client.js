@@ -22,7 +22,7 @@ delete window['__STATE__'];
 const render = (Component) =>
     ReactDOM.render(
         <AppContainer>
-            <Component store={store} />
+            <Component store={store}/>
         </AppContainer>,
         rootEl
     );
