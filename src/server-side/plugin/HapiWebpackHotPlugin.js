@@ -3,7 +3,7 @@ import ServerManager from '../ServerManager';
 import HapiWebpackPlugin from 'hapi-webpack-plugin';
 import notifier from 'node-notifier';
 
-class WebpackPlugin {
+class HapiWebpackHotPlugin {
 
     constructor(server) {
         const compiler = new Webpack(require('../../../webpack.config.js'));
@@ -49,4 +49,4 @@ class WebpackPlugin {
 
 }
 
-export default WebpackPlugin;
+export default HapiWebpackHotPlugin;
