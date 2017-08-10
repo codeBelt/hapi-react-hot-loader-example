@@ -18,7 +18,7 @@ class Contact extends React.Component {
     }
 
     render() {
-        const { handleSubmit } = this.props;
+        const {handleSubmit, reset} = this.props;
 
         return (
             <div>
@@ -48,13 +48,17 @@ class Contact extends React.Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleSelect1">{'Example select'}</label>
-                        <select className="form-control" id="exampleSelect1">
+                        <Field
+                            name="exampleSelect1"
+                            className="form-control"
+                            component="select"
+                        >
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
                             <option>5</option>
-                        </select>
+                        </Field>
                     </div>
                     <div className="form-group">
                         <Field
@@ -72,6 +76,7 @@ class Contact extends React.Component {
                             label="This code is awesome!"
                             name="codeQualityRadio"
                             option="1"
+                            checked={true}
                         />
                         <Field
                             component={this._renderRadio}
@@ -84,6 +89,7 @@ class Contact extends React.Component {
                             label="This code is bad."
                             name="codeQualityRadio"
                             option="3"
+                            disabled={true}
                         />
                     </fieldset>
                     <div className="form-check">
@@ -94,7 +100,19 @@ class Contact extends React.Component {
                             type="checkbox"
                         />
                     </div>
-                    <button type="submit" className="btn btn-primary">{'Submit'}</button>
+                    <button
+                        type="submit"
+                        className="btn btn-primary"
+                    >
+                        {'Submit'}
+                    </button>
+                    <button
+                        type="submit"
+                        className="btn btn-primary"
+                        onClick={reset}
+                    >
+                        {'Reset'}
+                    </button>
                 </form>
             </div>
         );
@@ -102,6 +120,7 @@ class Contact extends React.Component {
 
     _onFormSubmit(formData){
         // TODO: Can an acton with the form data.
+        alert(formData);
         console.log(formData);
     }
 
@@ -151,6 +170,8 @@ class Contact extends React.Component {
                         className="form-check-input"
                         name={field.input.name}
                         value={field.option}
+                        disabled={field.disabled}
+                        checked={field.checked}
                     />
                     {field.label}
                 </label>
@@ -186,13 +207,14 @@ export default reduxForm({
     form: 'contactForm',
     validate: (formData) => {
         const errors = {};
+        const validEmailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+
+        if (!validEmailRegex.test(formData.email)) {
+            errors.email = 'Invalid email address';
+        }
 
         if (!formData.name) {
             errors.name = 'Required';
-        }
-
-        if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formData.email)) {
-            errors.email = 'Invalid email address';
         }
 
         if (!formData.message) {
