@@ -8,7 +8,9 @@ import rootSaga from '../../store/rootSaga';
 
 class ReactController {
 
-    mapRoutes(server) {
+    async mapRoutes(server) {
+        const baseMarkup = await fse.readFile(path.resolve(__dirname, '../../public/index.html'), 'utf8');
+
         server.route({
             method: 'GET',
             path: '/{route*}',
@@ -34,7 +36,7 @@ class ReactController {
                         }
                     };
 
-                    let html = await fse.readFile(path.resolve(__dirname, '../../public/index.html'), 'utf8');
+                    let html = baseMarkup.slice();
                     html = html.replace('{title}', state.metaReducer.title);
                     html = html.replace('{description}', state.metaReducer.description);
                     html = html.replace('{content}', renderedHtml);
