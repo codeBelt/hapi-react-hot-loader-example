@@ -119,9 +119,9 @@ class Contact extends React.Component {
     }
 
     _onFormSubmit(formData){
-        // TODO: Can an acton with the form data.
-        alert(formData);
         console.log(formData);
+
+        window.alert(JSON.stringify(formData, null, 2));
     }
 
     _renderInputField(field) {
