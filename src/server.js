@@ -4,7 +4,7 @@ import * as inert from 'inert';
 import ServerManager from './server-side/ServerManager';
 import AssetsController from './server-side/controllers/AssetsController';
 import ReactController from './server-side/controllers/ReactController';
-import HapiWebpackHotPlugin from "./server-side/plugin/HapiWebpackHotPlugin";
+import HapiWebpackHotPlugin from './server-side/plugin/HapiWebpackHotPlugin';
 
 const manager = new ServerManager();
 manager.registerPlugin(inert);
