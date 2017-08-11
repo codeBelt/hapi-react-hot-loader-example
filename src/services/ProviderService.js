@@ -12,7 +12,7 @@ class ProviderService {
         const store = createStore(
             rootReducer,
             initialState,
-            composeWithDevTools(applyMiddleware(sagaMiddleware))
+            composeWithDevTools(applyMiddleware(sagaMiddleware)),
         );
 
         if (isServerSide) {
@@ -32,7 +32,7 @@ class ProviderService {
     static _setupHotReloading(store) {
         if (module.hot) {
             module.hot.accept('../store/rootReducer', () => {
-                const nextReducer = require('../store/rootReducer').default;
+                const nextReducer = require('../store/rootReducer').default; // eslint-disable-line global-require
 
                 store.replaceReducer(nextReducer);
             });

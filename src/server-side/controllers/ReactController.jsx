@@ -1,4 +1,4 @@
-import {renderToString, renderToStaticMarkup} from 'react-dom/server';
+import {renderToString} from 'react-dom/server';
 import path from 'path';
 import * as fse from 'fs-extra';
 import * as React from 'react';
@@ -31,7 +31,7 @@ class ReactController {
                         ...state,
                         renderReducer: {
                             isServerSide: true,
-                        }
+                        },
                     };
 
                     let html = await fse.readFile(path.resolve(__dirname, '../../public/index.html'), 'utf8');
@@ -52,7 +52,7 @@ class ReactController {
                 renderToString(app);
 
                 store.endSaga();
-            }
+            },
         });
     }
 

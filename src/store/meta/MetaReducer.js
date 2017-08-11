@@ -26,5 +26,3 @@ class MetaReducer {
 }
 
 export default MetaReducer;
-
-

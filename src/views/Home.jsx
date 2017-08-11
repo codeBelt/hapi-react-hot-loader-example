@@ -4,7 +4,7 @@ import UserAction from '../store/user/UserAction';
 import MetaAction from '../store/meta/MetaAction';
 
 const mapStateToProps = (state) => ({
-    user: state.userReducer
+    user: state.userReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -31,12 +31,11 @@ class Home extends React.Component {
                     <img
                         className="rounded mx-auto d-block"
                         src={user.picture.large}
-                        alt="Users Photo"
+                        alt=""
                     />
                     <p>
                         <button
                             className="btn btn-lg btn-success"
-                            role="button"
                             onClick={this.props.loadUser}
                         >
                             {'Load Another User'}

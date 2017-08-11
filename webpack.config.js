@@ -15,7 +15,7 @@ const config = {
     entry: isProduction
         ? [
             'babel-polyfill',
-            './src/client.js'
+            './src/client.jsx',
         ]
         : [
             'babel-polyfill',
@@ -23,7 +23,7 @@ const config = {
             'react-hot-loader/patch', // activate HMR for React
             `webpack-hot-middleware/client?path=http://${HOST}:${PORT}/__webpack_hmr`, // bundle the client for webpack-hot-middleware and connect to the provided endpoint
 
-            './src/client.js',
+            './src/client.jsx',
         ],
 
     resolve: {
@@ -42,7 +42,7 @@ const config = {
             {
                 test: /\.css$/,
                 use: ['css-hot-loader'].concat(
-                    ExtractTextPlugin.extract({fallback: 'style-loader', use: ['css-loader']})
+                    ExtractTextPlugin.extract({fallback: 'style-loader', use: ['css-loader']}),
                 ),
             },
             {
@@ -57,7 +57,7 @@ const config = {
         new ProgressBarPlugin(),
 
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(NODE_ENV || 'development')
+            'process.env.NODE_ENV': JSON.stringify(NODE_ENV || 'development'),
         }),
 
         isProduction
@@ -73,13 +73,13 @@ const config = {
         new ExtractTextPlugin({
             filename: isProduction
                 ? 'assets/styles/[name].[chunkhash].css'
-                : 'assets/styles/main.css'
+                : 'assets/styles/main.css',
         }),
 
         isProduction
             ? new webpack.optimize.CommonsChunkPlugin({
                 name: 'vendor',
-                minChunks: module => /node_modules/.test(module.resource)
+                minChunks: module => /node_modules/.test(module.resource),
             })
             : null,
 
@@ -98,9 +98,9 @@ const config = {
             {
                 context: 'src/assets/media',
                 from: '**/*',
-                to: 'assets/media'
-            }
-        ])
+                to: 'assets/media',
+            },
+        ]),
     ].filter(Boolean),
 
     devtool: isProduction
@@ -108,7 +108,7 @@ const config = {
         : 'cheap-module-eval-source-map',
 
     performance: {
-        maxAssetSize: 500000
+        maxAssetSize: 500000,
     },
 };
 

@@ -10,7 +10,7 @@ const manager = new ServerManager();
 manager.registerPlugin(inert);
 
 if (manager.isProduction === false) {
-    new HapiWebpackHotPlugin(manager.server);
+    new HapiWebpackHotPlugin(manager.server); // eslint-disable-line no-new
 }
 
 manager.registerController(new AssetsController());

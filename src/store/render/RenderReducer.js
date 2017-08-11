@@ -11,5 +11,3 @@ class RenderReducer {
 }
 
 export default RenderReducer;
-
-

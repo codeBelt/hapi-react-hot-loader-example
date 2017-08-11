@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import MetaAction from '../store/meta/MetaAction';
-import {Field, FormProps, reduxForm} from 'redux-form';
+import {Field, reduxForm} from 'redux-form';
 
 const mapStateToProps = (state) => ({});
 
@@ -52,18 +52,11 @@ class Contact extends React.Component {
                         </small>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="exampleSelect1">{'Example select'}</label>
                         <Field
+                            label={'Example select'}
                             name="exampleSelect1"
-                            className="form-control"
-                            component="select"
-                        >
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </Field>
+                            component={this._renderSelect}
+                        />
                     </div>
                     <div className="form-group">
                         <Field
@@ -124,9 +117,9 @@ class Contact extends React.Component {
     }
 
     _onFormSubmit(formData) {
-        console.log(formData);
+        console.info(formData);
 
-        window.alert(JSON.stringify(formData, null, 2));
+        window.alert(JSON.stringify(formData, null, 2)); // eslint-disable-line no-alert
     }
 
     _renderInputField(field) {
@@ -134,7 +127,7 @@ class Contact extends React.Component {
         const className = `small text-danger ${touched && error ? '' : 'd-none'}`;
 
         return (
-            <span>
+            <div>
                 <label htmlFor={field.input.name}>
                     {field.label} <span className={className}>{error}</span>
                 </label>
@@ -145,7 +138,7 @@ class Contact extends React.Component {
                     placeholder={field.placeholder}
                     type={field.type}
                 />
-            </span>
+            </div>
         );
     }
 
@@ -168,15 +161,16 @@ class Contact extends React.Component {
     _renderRadio(field) {
         return (
             <div className="form-check">
-                <label className="form-check-label">
+                <label htmlFor={field.input.name} className="form-check-label">
                     <input
                         {...field.input}
-                        type="radio"
-                        className="form-check-input"
-                        name={field.input.name}
-                        value={field.option}
-                        disabled={field.disabled}
                         checked={field.checked}
+                        className="form-check-input"
+                        disabled={field.disabled}
+                        id={field.input.name}
+                        name={field.input.name}
+                        type="radio"
+                        value={field.option}
                     />
                     {field.label}
                 </label>
@@ -189,7 +183,7 @@ class Contact extends React.Component {
         const className = `small text-danger ${touched && error ? '' : 'd-none'}`;
 
         return (
-            <span>
+            <div>
                 <label htmlFor={field.input.name}>
                     {field.label} <span className={className}>{error}</span>
                 </label>
@@ -198,15 +192,34 @@ class Contact extends React.Component {
                     className="form-control"
                     placeholder={field.placeholder}
                     rows="3"
+                />
+            </div>
+        );
+    }
+
+    /* eslint-disable jsx-a11y/label-has-for */
+    _renderSelect(field) {
+        return (
+            <div>
+                <label htmlFor={field.name}>
+                    {field.label}
+                </label>
+                <select
+                    {...field.input}
+                    id={field.name}
+                    className="form-control"
                 >
-                </textarea>
-            </span>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
         );
     }
 
 }
-
-Contact = connect(mapStateToProps, mapDispatchToProps)(Contact);
 
 export default reduxForm({
     form: 'contactForm',
@@ -228,4 +241,4 @@ export default reduxForm({
 
         return errors;
     },
-})(Contact);
+})(connect(mapStateToProps, mapDispatchToProps)(Contact));

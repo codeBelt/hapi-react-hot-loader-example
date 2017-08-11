@@ -19,7 +19,7 @@ class About extends React.Component {
             <div>
                 <div className="jumbotron">
                     <h1 className="display-3">{'About'}</h1>
-                    <p className="lead">{'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.'}</p>
+                    <p className="lead">{'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus.'}</p>
                 </div>
 
                 <div className="row marketing">
