@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -100,7 +101,21 @@ const config = {
                 from: '**/*',
                 to: 'assets/media'
             }
-        ])
+        ]),
+
+        new RobotstxtPlugin({
+            policy: [
+                isProduction
+                    ? {
+                        userAgent: '*',
+                        allow: '/',
+                    }
+                    : {
+                        userAgent: '*',
+                        disallow: '/',
+                    }
+            ]
+        })
     ].filter(Boolean),
 
     devtool: isProduction
