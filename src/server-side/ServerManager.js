@@ -14,7 +14,7 @@ class ServerManager {
 
     get server() {
         return this._server;
-    };
+    }
 
     constructor() {
         this._server.connection({

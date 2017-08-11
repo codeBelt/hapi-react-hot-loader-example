@@ -4,7 +4,7 @@ import LoadingAction from '../loading/LoadingAction';
 
 class UserSaga {
 
-    static *loadUser(action) {
+    static* loadUser(action) {
         yield put({
             type: LoadingAction.SET_LOADING,
             payload: true,

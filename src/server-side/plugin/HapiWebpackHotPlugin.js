@@ -23,12 +23,11 @@ class HapiWebpackHotPlugin {
 
         server.register({
             register: HapiWebpackPlugin,
-            options
-        }, error => {
+            options,
+        }, (error) => {
             if (error) {
-                return console.error(error);
+                console.error(error);
             }
-
         });
     }
 

@@ -19,7 +19,7 @@ class UserReducer {
             large: '',
             medium: '',
             thumbnail: '',
-        }
+        },
     };
 
     static reduce(state = UserReducer._initialState, action) {
@@ -41,5 +41,3 @@ class UserReducer {
 }
 
 export default UserReducer;
-
-

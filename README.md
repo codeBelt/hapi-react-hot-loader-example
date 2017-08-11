@@ -7,10 +7,10 @@ Example application demonstrating react-hot-loader-3 with webpack-2, react and f
 3. http://localhost:3000
 
 ## dev tasks
-- $ `yarn dev` (local development w/ server)
 - $ `yarn lint` (eslint)
+- $ `yarn dev` (local development w/ server)
 
-Instead of stopping and restart nodemon, you can simply type `rs` with a carriage return
+> Type `rs` with a carriage return to restart nodemon if you make changes to the files within `server-side`. It's not efficient to automatically restart nodemon on file changes.
 
 ## build tasks
 - $ `yarn start` (production build w/ server)

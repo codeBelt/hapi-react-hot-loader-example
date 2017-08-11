@@ -2,7 +2,7 @@ import {all, fork, takeLatest, select} from 'redux-saga/effects';
 import UserSaga from './user/UserSaga';
 import UserAction from './user/UserAction';
 
-export default function *rootSaga() {
+export default function* rootSaga() {
     const store = yield select();
     const isServerSide = store.renderReducer.isServerSide;
 
