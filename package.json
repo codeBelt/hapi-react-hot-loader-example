@@ -1,5 +1,5 @@
 {
-  "name": "hapi-react-hot-loader",
+  "name": "hapi-react-hot-loader-example",
   "version": "1.0.0",
   "description": "Simple React Hot Loading example with Hapi Server-side rendering",
   "scripts": {
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/codeBelt/hapi-react-hot-loader"
+    "url": "https://github.com/codeBelt/hapi-react-hot-loader-example"
   },
   "keywords": [
     "hapi",
