@@ -10,7 +10,6 @@ class ServerManager {
 
     _server = new Hapi.Server({debug: {request: ['error']}});
 
-    isProduction = (NODE_ENV === 'production');
     isDevelopment = (NODE_ENV === 'development');
 
     get server() {
