@@ -12,6 +12,10 @@ Example application demonstrating react-hot-loader-3 with webpack-2, react and f
 
 > Type `rs` with a carriage return to restart nodemon if you make changes to the files within `server-side`. It's not efficient to automatically restart nodemon on file changes.
 
-## build tasks
-- $ `yarn start` (production build w/ server)
-- $ `yarn build` (production build)
+## production tasks
+- $ `yarn prod` (production build w/ server)
+- $ `yarn prod:build` (production build)
+
+## staging tasks
+- $ `yarn staging` (staging build w/ server)
+- $ `yarn staging:build` (staging build)
