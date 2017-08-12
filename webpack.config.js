@@ -9,7 +9,7 @@ const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
-const NODE_ENV = process.env.NODE_ENV;
+const NODE_ENV = process.env.NODE_ENV || 'production';
 const isProduction = (NODE_ENV === 'production');
 const isDevelopment = (NODE_ENV === 'development');
 
@@ -60,7 +60,7 @@ const config = {
         new ProgressBarPlugin(),
 
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(NODE_ENV || 'development'),
+            'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
         }),
 
         isDevelopment
