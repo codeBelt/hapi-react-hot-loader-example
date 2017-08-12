@@ -9,7 +9,7 @@ import HapiWebpackHotPlugin from './server/plugin/HapiWebpackHotPlugin';
 const manager = new ServerManager();
 manager.registerPlugin(inert);
 
-if (manager.isProduction === false) {
+if (manager.isDevelopment) {
     new HapiWebpackHotPlugin(manager.server); // eslint-disable-line no-new
 }
 

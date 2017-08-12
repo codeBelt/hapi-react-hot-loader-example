@@ -11,6 +11,7 @@ class ServerManager {
     _server = new Hapi.Server({debug: {request: ['error']}});
 
     isProduction = (NODE_ENV === 'production');
+    isDevelopment = (NODE_ENV === 'development');
 
     get server() {
         return this._server;
@@ -37,7 +38,7 @@ class ServerManager {
                 throw error;
             }
 
-            if (this.isProduction) {
+            if (!this.isDevelopment) {
                 ServerManager.log();
             }
         });
