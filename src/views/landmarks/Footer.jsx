@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-class Footer extends React.Component {
+class Footer extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
     render() {
         return (

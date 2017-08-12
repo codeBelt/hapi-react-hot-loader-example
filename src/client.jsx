@@ -13,7 +13,7 @@ const initialState = {
     ...window['__STATE__'],
     renderReducer: {
         isServerSide: false,
-    }
+    },
 };
 const store = ProviderService.createProviderStore(initialState);
 
@@ -22,9 +22,9 @@ delete window['__STATE__'];
 const render = (Component) =>
     ReactDOM.render(
         <AppContainer>
-            <Component store={store}/>
+            <Component store={store} />
         </AppContainer>,
-        rootEl
+        rootEl,
     );
 
 render(RouterWrapper);

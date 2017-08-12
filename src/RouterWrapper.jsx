@@ -2,11 +2,11 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {StaticRouter} from 'react-router';
-import About from "./views/About";
-import Home from "./views/Home";
-import Contact from "./views/Contact";
-import Footer from "./views/landmarks/Footer";
-import Header from "./views/landmarks/Header";
+import About from './views/About';
+import Home from './views/Home';
+import Contact from './views/Contact';
+import Footer from './views/landmarks/Footer';
+import Header from './views/landmarks/Header';
 
 const RouterWrapper = (props) => {
     const Router = props.isServerSide ? StaticRouter : BrowserRouter;
@@ -18,7 +18,7 @@ const RouterWrapper = (props) => {
                 location={props.location}
             >
                 <div className="container">
-                    <Header/>
+                    <Header />
                     <Switch>
                         <Route
                             exact
@@ -34,7 +34,7 @@ const RouterWrapper = (props) => {
                             component={Contact}
                         />
                     </Switch>
-                    <Footer/>
+                    <Footer />
                 </div>
             </Router>
         </Provider>

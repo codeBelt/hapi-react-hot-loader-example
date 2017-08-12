@@ -1,4 +1,4 @@
-import {put, call} from 'redux-saga/effects';
+import {put} from 'redux-saga/effects';
 import UserAction from './UserAction';
 import LoadingAction from '../loading/LoadingAction';
 

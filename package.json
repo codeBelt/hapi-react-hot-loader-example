@@ -20,7 +20,7 @@
     "start": "cross-env npm run build && NODE_ENV=production node ./dist/server.js",
     "---------- TESTING ------------------------------------------------------------": "",
     "test": "cross-env npm run lint && npm run unit",
-    "lint": "cross-env eslint src",
+    "lint": "cross-env eslint src --ext .js,.jsx",
     "unit": "cross-env jest",
     "-------------------------------------------------------------------------------": ""
   },
@@ -68,13 +68,11 @@
     "extract-text-webpack-plugin": "2.1.0",
     "html-webpack-harddisk-plugin": "0.1.0",
     "html-webpack-plugin": "2.29.0",
-    "node-notifier": "5.1.2",
     "nodemon": "1.11.0",
     "progress-bar-webpack-plugin": "1.10.0",
     "rimraf": "2.6.1",
     "robotstxt-webpack-plugin": "2.0.0",
     "style-loader": "0.18.2",
-    "webpack": "2.2.0",
     "webpack-dev-middleware": "1.11.0",
     "webpack-hot-middleware": "2.18.2"
   },
@@ -86,6 +84,7 @@
     "hapi": "16.5.0",
     "hapi-webpack-plugin": "2.0.0",
     "inert": "4.2.1",
+    "node-notifier": "5.1.2",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-hot-loader": "next",
@@ -95,6 +94,7 @@
     "redux": "3.7.2",
     "redux-devtools-extension": "2.13.2",
     "redux-form": "7.0.3",
-    "redux-saga": "0.15.6"
+    "redux-saga": "0.15.6",
+    "webpack": "2.2.0"
   }
 }

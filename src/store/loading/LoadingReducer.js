@@ -25,5 +25,3 @@ class LoadingReducer {
 }
 
 export default LoadingReducer;
-
-
