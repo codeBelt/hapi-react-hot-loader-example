@@ -45,7 +45,13 @@ const config = {
             {
                 test: /\.css$/,
                 use: ['css-hot-loader'].concat(
-                    ExtractTextPlugin.extract({fallback: 'style-loader', use: ['css-loader']}),
+                    ExtractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        use: [{
+                            loader: 'css-loader',
+                            options: {minimize: true},
+                        }],
+                    }),
                 ),
             },
             {
@@ -89,6 +95,11 @@ const config = {
         isDevelopment
             ? null
             : new webpack.optimize.CommonsChunkPlugin({name: 'manifest'}),
+
+
+        isDevelopment
+            ? null
+            : new webpack.optimize.UglifyJsPlugin(),
 
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src/index.html'),
