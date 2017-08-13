@@ -22,8 +22,6 @@ class ProviderService {
             sagaMiddleware.run(rootSaga);
         }
 
-        // Saga reloading https://gist.github.com/markerikson/dc6cee36b5b6f8d718f2e24a249e0491
-
         ProviderService._setupHotReloading(store);
 
         return store;
