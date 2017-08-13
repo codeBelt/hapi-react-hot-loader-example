@@ -10,7 +10,7 @@ Example application demonstrating react-hot-loader-3 with webpack-2, react and f
 - $ `yarn lint` (eslint)
 - $ `yarn dev` (local development w/ server)
 
-> Type `rs` with a carriage return to restart nodemon if you make changes to the files within `server-side`. It's not efficient to automatically restart nodemon on file changes.
+> Type `rs` with a carriage return to restart nodemon if you make changes to the `server.js` file or any files within the `server` folder. It's not efficient to automatically restart nodemon on file changes.
 
 ## production tasks
 - $ `yarn prod` (production build w/ server)
@@ -22,6 +22,6 @@ Example application demonstrating react-hot-loader-3 with webpack-2, react and f
 
 
 ###### Note: Saga's do not hot load. 
-> [Read more about the complexities](https://github.com/redux-saga/redux-saga/issues/22#issuecomment-218737951) and/or [implement yourself](https://gist.github.com/markerikson/dc6cee36b5b6f8d718f2e24a249e0491).
+> [Read more about potential issues](https://github.com/redux-saga/redux-saga/issues/22#issuecomment-218737951) and/or [implement yourself](https://gist.github.com/markerikson/dc6cee36b5b6f8d718f2e24a249e0491).
 
 
