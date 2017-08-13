@@ -96,7 +96,6 @@ const config = {
             ? null
             : new webpack.optimize.CommonsChunkPlugin({name: 'manifest'}),
 
-
         isDevelopment
             ? null
             : new webpack.optimize.UglifyJsPlugin(),
