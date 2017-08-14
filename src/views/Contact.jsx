@@ -151,6 +151,7 @@ class Contact extends React.Component {
                 <input
                     {...field.input}
                     className="form-check-input"
+                    id={field.input.name}
                     type="checkbox"
                 />
                 {field.label}
@@ -161,13 +162,17 @@ class Contact extends React.Component {
     _renderRadio(field) {
         return (
             <div className="form-check">
-                <label htmlFor={field.input.name} className="form-check-label">
+                <label
+                    className="form-check-label"
+                    disabled={field.disabled}
+                    htmlFor={field.input.name + field.option}
+                >
                     <input
                         {...field.input}
                         checked={field.checked}
                         className="form-check-input"
                         disabled={field.disabled}
-                        id={field.input.name}
+                        id={field.input.name + field.option}
                         name={field.input.name}
                         type="radio"
                         value={field.option}
