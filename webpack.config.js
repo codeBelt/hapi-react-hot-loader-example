@@ -10,7 +10,7 @@ const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 const NODE_ENV = process.env.NODE_ENV || 'production';
-const isProduction = (NODE_ENV === 'production');
+const isProduction = (NODE_ENV === 'production' || NODE_ENV === 'staging');
 const isDevelopment = (NODE_ENV === 'development');
 
 const config = {
