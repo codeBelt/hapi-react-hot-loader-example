@@ -10,7 +10,7 @@ const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 const NODE_ENV = process.env.NODE_ENV || 'production';
-const isProduction = (NODE_ENV === 'production' || NODE_ENV === 'staging');
+const isProduction = (NODE_ENV === 'production');
 const isDevelopment = (NODE_ENV === 'development');
 
 const config = {
@@ -96,9 +96,9 @@ const config = {
             ? null
             : new webpack.optimize.CommonsChunkPlugin({name: 'manifest'}),
 
-        isDevelopment
-            ? null
-            : new webpack.optimize.UglifyJsPlugin(),
+        isProduction
+            ? new webpack.optimize.UglifyJsPlugin()
+            : null,
 
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src/index.html'),
