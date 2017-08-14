@@ -1,5 +1,5 @@
 # `hapi-react-hot-loader-example`
-Example univers/isomorphic application demonstrating react-hot-loader-3 with webpack-2, react and friends, and hapi.
+Example universal/isomorphic application demonstrating react-hot-loader-3 with webpack-2, react and friends, and hapi.
 
 ## get started
 1. $ `yarn`
