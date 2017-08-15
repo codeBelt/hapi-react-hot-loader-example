@@ -56,7 +56,7 @@ const config = {
                                 loader: 'postcss-loader',
                             },
                         ],
-                    }),
+                    })
                 ),
             },
             {
