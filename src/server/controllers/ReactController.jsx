@@ -26,6 +26,8 @@ class ReactController {
                     />
                 );
 
+                this._html = (this._html === null) ? await this._loadHtmlFile() : this._html.slice(0);
+
                 store.runSaga(rootSaga).done.then(async () => {
                     const renderedHtml = renderToString(app);
                     const state = store.getState();
@@ -36,13 +38,12 @@ class ReactController {
                         },
                     };
 
-
-                    let html = (this._html) ? this._html.slice(0) : await this._loadHtmlFile();
-
-                    html = html.replace('{title}', state.metaReducer.title);
-                    html = html.replace('{description}', state.metaReducer.description);
-                    html = html.replace('{content}', renderedHtml);
-                    html = html.replace('{state}', JSON.stringify(initialState));
+                    const html = this._html
+                        .slice(0)
+                        .replace('{title}', state.metaReducer.title)
+                        .replace('{description}', state.metaReducer.description)
+                        .replace('{content}', renderedHtml)
+                        .replace('{state}', JSON.stringify(initialState));
 
                     // context.url will contain the URL to redirect to if a <Redirect> was used
                     if (context.url) {
@@ -62,7 +63,7 @@ class ReactController {
 
     async _loadHtmlFile() {
         const htmlPath = path.resolve(__dirname, '../../public/index.html');
-
+console.log(`_loadHtmlFile`);
         return fse.readFile(htmlPath, 'utf8');
     }
 
