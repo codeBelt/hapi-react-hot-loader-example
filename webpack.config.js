@@ -51,7 +51,7 @@ const config = {
                             loader: 'css-loader',
                             options: {minimize: true},
                         }],
-                    }),
+                    })
                 ),
             },
             {
