@@ -63,7 +63,7 @@ class ReactController {
 
     async _loadHtmlFile() {
         const htmlPath = path.resolve(__dirname, '../../public/index.html');
-console.log(`_loadHtmlFile`);
+
         return fse.readFile(htmlPath, 'utf8');
     }
 
