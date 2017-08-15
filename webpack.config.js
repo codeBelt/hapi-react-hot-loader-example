@@ -47,10 +47,15 @@ const config = {
                 use: ['css-hot-loader'].concat(
                     ExtractTextPlugin.extract({
                         fallback: 'style-loader',
-                        use: [{
-                            loader: 'css-loader',
-                            options: {minimize: true},
-                        }],
+                        use: [
+                            {
+                                loader: 'css-loader',
+                                options: {minimize: true},
+                            },
+                            {
+                                loader: 'postcss-loader',
+                            },
+                        ],
                     })
                 ),
             },
