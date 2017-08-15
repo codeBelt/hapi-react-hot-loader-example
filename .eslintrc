@@ -27,7 +27,9 @@
     "react/prop-types": [0],
     "react/sort-comp": [0],
     "react/prefer-stateless-function": [2, {"ignorePureComponents": true}],
-    "filenames/no-index": [2]
+    "filenames/no-index": [2],
+    "newline-after-var": [2],
+    "newline-before-return": [2]
   },
   "plugins": [
     "react",

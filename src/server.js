@@ -7,6 +7,7 @@ import ReactController from './server/controllers/ReactController';
 import HapiWebpackHotPlugin from './server/plugin/HapiWebpackHotPlugin';
 
 const manager = new ServerManager();
+
 manager.registerPlugin(inert);
 
 if (manager.isDevelopment) {
