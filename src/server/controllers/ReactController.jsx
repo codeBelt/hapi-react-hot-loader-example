@@ -26,7 +26,7 @@ class ReactController {
                     />
                 );
 
-                this._html = (this._html === null) ? await this._loadHtmlFile() : this._html.slice(0);
+                this._html = (this._html === null) ? await this._loadHtmlFile() : this._html;
 
                 store.runSaga(rootSaga).done.then(async () => {
                     const renderedHtml = renderToString(app);
