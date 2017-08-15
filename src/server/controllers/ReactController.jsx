@@ -8,6 +8,8 @@ import rootSaga from '../../store/rootSaga';
 
 class ReactController {
 
+    _html = null;
+
     mapRoutes(server) {
         server.route({
             method: 'GET',
@@ -34,7 +36,9 @@ class ReactController {
                         },
                     };
 
-                    let html = await fse.readFile(path.resolve(__dirname, '../../public/index.html'), 'utf8');
+
+                    let html = (this._html) ? this._html.slice(0) : await this._loadHtmlFile();
+
                     html = html.replace('{title}', state.metaReducer.title);
                     html = html.replace('{description}', state.metaReducer.description);
                     html = html.replace('{content}', renderedHtml);
@@ -54,6 +58,12 @@ class ReactController {
                 store.endSaga();
             },
         });
+    }
+
+    async _loadHtmlFile() {
+        const htmlPath = path.resolve(__dirname, '../../public/index.html');
+
+        return fse.readFile(htmlPath, 'utf8');
     }
 
 }
