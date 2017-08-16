@@ -1,12 +1,13 @@
 import * as React from 'react';
 import {Provider} from 'react-redux';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import {StaticRouter} from 'react-router';
 import About from './views/About';
 import Home from './views/Home';
 import Contact from './views/Contact';
 import Footer from './views/landmarks/Footer';
 import Header from './views/landmarks/Header';
+import NotFound from './views/NotFound';
 
 const RouterWrapper = (props) => {
     const Router = props.isServerSide ? StaticRouter : BrowserRouter;
@@ -33,6 +34,11 @@ const RouterWrapper = (props) => {
                             path="/contact"
                             component={Contact}
                         />
+                        <Redirect
+                            from="/old-path"
+                            to="/"
+                        />
+                        <Route component={NotFound} />
                     </Switch>
                     <Footer />
                 </div>

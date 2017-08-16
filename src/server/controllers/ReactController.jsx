@@ -45,13 +45,11 @@ class ReactController {
                         .replace('{content}', renderedHtml)
                         .replace('{state}', JSON.stringify(initialState));
 
-                    // context.url will contain the URL to redirect to if a <Redirect> was used
                     if (context.url) {
-                        // TODO: figure out redirects
-                        reply(context.url);
-                    } else {
-                        reply(html);
+                        console.info('context', context);
                     }
+
+                    reply(html);
                 });
 
                 renderToString(app);
