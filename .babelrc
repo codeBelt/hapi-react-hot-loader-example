@@ -27,9 +27,6 @@
       "ignore": [
         "main.js"
       ]
-    },
-    "test": {
-      "presets": ["es2015", "react"]
     }
   }
 }
