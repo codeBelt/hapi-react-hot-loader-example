@@ -24,9 +24,9 @@
     "---------- TESTING -----------------------------------------------------------------------------": "",
     "test": "cross-env npm run lint && npm run unit",
     "lint": "cross-env eslint src --ext .js,.jsx",
-    "unit": "cross-env BABEL_ENV=server jest",
-    "unit:watch": "cross-env BABEL_ENV=server jest --watch",
-    "unit:coverage": "cross-env BABEL_ENV=server jest --coverage",
+    "unit": "cross-env BABEL_ENV=server NODE_ENV=production jest",
+    "unit:watch": "cross-env BABEL_ENV=server NODE_ENV=production jest --watch",
+    "unit:coverage": "cross-env BABEL_ENV=server NODE_ENV=production jest --coverage",
     "------------------------------------------------------------------------------------------------": ""
   },
   "jest": {},

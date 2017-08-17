@@ -23,7 +23,7 @@ const render = (Component) =>
         <AppContainer>
             <Component store={store} />
         </AppContainer>,
-        rootEl,
+        rootEl
     );
 
 render(RouterWrapper);

@@ -29,7 +29,14 @@
     "react/prefer-stateless-function": [2, {"ignorePureComponents": true}],
     "filenames/no-index": [2],
     "newline-after-var": [2],
-    "newline-before-return": [2]
+    "newline-before-return": [2],
+    "comma-dangle": [2, {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "ignore"
+    }]
   },
   "plugins": [
     "react",
