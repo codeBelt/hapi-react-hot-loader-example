@@ -70,8 +70,8 @@ describe('views/Home', () => {
     });
 
     it('should call setMeta action', () => {
-        const action = store.getActions();
-        const actual = action[0];
+        const actions = store.getActions();
+        const actual = actions[0];
         const expected = {
             type: MetaAction.SET_META,
             payload: {
@@ -86,13 +86,23 @@ describe('views/Home', () => {
     it('should call loadUser action on button click', () => {
         component.find('button').simulate('click');
 
-        const action = store.getActions();
-        const actual = action[1];
+        const actions = store.getActions();
+        const actual = actions[1];
         const expected = {
             type: UserAction.LOAD_USER,
         };
 
         expect(actual).toEqual(expected);
+    });
+
+    it('should call X number of actions', () => {
+        component.find('button').simulate('click');
+
+        const actions = store.getActions();
+        const actual = actions.length;
+        const expected = 2;
+
+        expect(actual).toBe(expected);
     });
 
 });
