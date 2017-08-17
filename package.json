@@ -29,7 +29,13 @@
     "unit:coverage": "cross-env BABEL_ENV=server NODE_ENV=production jest --coverage",
     "------------------------------------------------------------------------------------------------": ""
   },
-  "jest": {},
+  "jest": {
+    "setupFiles": [],
+    "roots": [
+      "<rootDir>/src/",
+      "<rootDir>/test/"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/codeBelt/hapi-react-hot-loader-example"
@@ -78,6 +84,7 @@
     "html-webpack-harddisk-plugin": "0.1.0",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "jsdom": "11.1.0",
     "nodemon": "1.11.0",
     "postcss-apply": "0.8.0",
     "postcss-cssnext": "3.0.2",
