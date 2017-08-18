@@ -75,6 +75,10 @@ const config = {
         }),
 
         isDevelopment
+            ? null
+            : new webpack.optimize.ModuleConcatenationPlugin(),
+
+        isDevelopment
             ? new webpack.HotModuleReplacementPlugin() // enable HMR globally
             : null,
         isDevelopment
