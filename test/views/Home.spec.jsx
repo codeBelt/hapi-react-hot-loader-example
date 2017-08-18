@@ -51,25 +51,25 @@ describe('views/Home', () => {
         component = wrapper.find(Home).first();
     });
 
-    it('should match mapStateToProps', () => {
+    test('should match mapStateToProps', () => {
         // TODO: how to test mapStateToProps
     });
 
-    it('should display users name', () => {
+    test('should display users name', () => {
         const actual = component.find('h1').text();
         const expected = `${initialState.userReducer.name.title} ${initialState.userReducer.name.first} ${initialState.userReducer.name.last}`;
 
         expect(actual).toBe(expected);
     });
 
-    it('should display correct image', () => {
+    test('should display correct image', () => {
         const actual = component.find('img').prop('src');
         const expected = initialState.userReducer.picture.large;
 
         expect(actual).toBe(expected);
     });
 
-    it('should call setMeta action', () => {
+    test('should call setMeta action', () => {
         const actions = store.getActions();
         const actual = actions[0];
         const expected = {
@@ -83,7 +83,7 @@ describe('views/Home', () => {
         expect(actual).toEqual(expected);
     });
 
-    it('should call loadUser action on button click', () => {
+    test('should call loadUser action on button click', () => {
         component.find('button').simulate('click');
 
         const actions = store.getActions();
@@ -95,7 +95,7 @@ describe('views/Home', () => {
         expect(actual).toEqual(expected);
     });
 
-    it('should call X number of actions', () => {
+    test('should call X number of actions', () => {
         component.find('button').simulate('click');
 
         const actions = store.getActions();

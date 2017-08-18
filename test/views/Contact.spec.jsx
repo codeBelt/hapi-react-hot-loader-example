@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {Provider} from 'react-redux';
 import {shallow, mount, render} from 'enzyme';
@@ -24,15 +23,15 @@ describe('views/Contact', () => {
         component = wrapper.find(Contact).first();
     });
     // https://github.com/tylercollier/redux-form-test
-    it('should match mapStateToProps', () => {
+    test('should match mapStateToProps', () => {
         // TODO: how to test mapStateToProps
     });
 
-    it('should test redux form', () => {
+    test('should test redux form', () => {
         // TODO: how to test redux-form
     });
 
-    it('should call setMeta action', () => {
+    test('should call setMeta action', () => {
         const actions = store.getActions();
         const actual = actions[1];
         const expected = {
@@ -45,7 +44,7 @@ describe('views/Contact', () => {
         expect(actual).toEqual(expected);
     });
 
-    it('should call X number of actions', () => {
+    test('should call X number of actions', () => {
         const actions = store.getActions();
         const actual = actions.length;
         const expected = 10;

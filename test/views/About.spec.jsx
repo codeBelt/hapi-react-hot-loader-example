@@ -23,11 +23,11 @@ describe('views/About', () => {
         component = wrapper.find(About).first();
     });
 
-    it('should match mapStateToProps', () => {
+    test('should match mapStateToProps', () => {
         // TODO: how to test mapStateToProps
     });
 
-    it('should call setMeta action', () => {
+    test('should call setMeta action', () => {
         const actions = store.getActions();
         const actual = actions[0];
         const expected = {
@@ -40,7 +40,7 @@ describe('views/About', () => {
         expect(actual).toEqual(expected);
     });
 
-    it('should call X number of actions', () => {
+    test('should call X number of actions', () => {
         const actions = store.getActions();
         const actual = actions.length;
         const expected = 1;
