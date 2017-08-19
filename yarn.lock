@@ -4775,6 +4775,10 @@ rc@^1.0.1, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-async-component@1.0.0-beta.3:
+  version "1.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/react-async-component/-/react-async-component-1.0.0-beta.3.tgz#72f79feecd47c7345dc15e24eec86d81a0ce320c"
+
 react-deep-force-update@^2.0.1:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-2.1.0.tgz#1c5f36ea96bcbf411605ec063f36c568ea4df86c"

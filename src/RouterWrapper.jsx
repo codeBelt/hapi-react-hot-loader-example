@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import {StaticRouter} from 'react-router';
-import About from './views/About';
+import AboutAsync from './views/AboutAsync';
 import Home from './views/Home';
 import Contact from './views/Contact';
 import Footer from './views/landmarks/Footer';
@@ -28,7 +28,7 @@ const RouterWrapper = (props) => {
                         />
                         <Route
                             path="/about"
-                            component={About}
+                            component={AboutAsync}
                         />
                         <Route
                             path="/contact"
