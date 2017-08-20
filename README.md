@@ -22,3 +22,10 @@ Example universal/isomorphic application demonstrating react-hot-loader-3 with w
 ## staging tasks
 - $ `yarn staging` (staging build w/ server)
 - $ `yarn staging:build` (staging build)
+
+---
+
+##### Other features/examples I am working:
+* Jest / Enzyme
+* Code Splitting
+* A separate TypeScript version
