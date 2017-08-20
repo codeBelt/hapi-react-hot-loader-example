@@ -1,4 +1,5 @@
 import {renderToString} from 'react-dom/server';
+import {AsyncComponentProvider} from 'react-async-component';
 import path from 'path';
 import * as fse from 'fs-extra';
 import * as React from 'react';
@@ -18,12 +19,14 @@ class ReactController {
                 const store = ProviderService.createProviderStore({}, true);
                 const context = {};
                 const app = (
-                    <RouterWrapper
-                        store={store}
-                        location={request.path}
-                        context={context}
-                        isServerSide={true}
-                    />
+                    <AsyncComponentProvider>
+                        <RouterWrapper
+                            store={store}
+                            location={request.path}
+                            context={context}
+                            isServerSide={true}
+                        />
+                    </AsyncComponentProvider>
                 );
 
                 this._html = (this._html === null) ? await this._loadHtmlFile() : this._html;

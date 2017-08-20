@@ -1,7 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './assets/styles/styles.css';
 
-import {AppContainer} from 'react-hot-loader';
+import {AppContainer as ReactHotLoader} from 'react-hot-loader';
+import {AsyncComponentProvider} from 'react-async-component';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import RouterWrapper from './RouterWrapper';
@@ -18,16 +19,18 @@ const rootEl = document.getElementById('root');
 
 delete window['__STATE__'];
 
-const render = (Component) =>
+const renderApp = (Component) =>
     ReactDOM.render(
-        <AppContainer>
-            <Component store={store} />
-        </AppContainer>,
+        <ReactHotLoader key={Math.random()}>
+            <AsyncComponentProvider>
+                <Component store={store} />
+            </AsyncComponentProvider>
+        </ReactHotLoader>,
         rootEl,
     );
 
-render(RouterWrapper);
+renderApp(RouterWrapper);
 
 if (module.hot) {
-    module.hot.accept('./RouterWrapper', () => render(RouterWrapper));
+    module.hot.accept('./RouterWrapper', () => renderApp(RouterWrapper));
 }

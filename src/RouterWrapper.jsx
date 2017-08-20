@@ -5,7 +5,7 @@ import {StaticRouter} from 'react-router';
 import AboutAsync from './views/AboutAsync';
 import Home from './views/Home';
 import Contact from './views/Contact';
-import Footer from './views/landmarks/Footer';
+import FooterAsync from './views/landmarks/FooterAsync';
 import Header from './views/landmarks/Header';
 import NotFound from './views/NotFound';
 
@@ -40,7 +40,7 @@ const RouterWrapper = (props) => {
                         />
                         <Route component={NotFound} />
                     </Switch>
-                    <Footer />
+                    <FooterAsync />
                 </div>
             </Router>
         </Provider>
