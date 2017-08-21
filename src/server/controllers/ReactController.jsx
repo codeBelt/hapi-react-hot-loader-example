@@ -1,5 +1,6 @@
 import {renderToString} from 'react-dom/server';
-import {AsyncComponentProvider} from 'react-async-component';
+import {AsyncComponentProvider, createAsyncContext} from 'react-async-component';
+import asyncBootstrapper from 'react-async-bootstrapper';
 import path from 'path';
 import * as fse from 'fs-extra';
 import * as React from 'react';
@@ -17,9 +18,10 @@ class ReactController {
             path: '/{route*}',
             handler: async (request, reply) => {
                 const store = ProviderService.createProviderStore({}, true);
+                const asyncContext = createAsyncContext();
                 const context = {};
                 const app = (
-                    <AsyncComponentProvider>
+                    <AsyncComponentProvider asyncContext={asyncContext}>
                         <RouterWrapper
                             store={store}
                             location={request.path}
@@ -31,33 +33,43 @@ class ReactController {
 
                 this._html = (this._html === null) ? await this._loadHtmlFile() : this._html;
 
-                store.runSaga(rootSaga).done.then(async () => {
-                    const renderedHtml = renderToString(app);
-                    const state = store.getState();
-                    const initialState = {
-                        ...state,
-                        renderReducer: {
-                            isServerSide: true,
-                        },
-                    };
+                asyncBootstrapper(app).then(() => {
+                    store.runSaga(rootSaga).done.then(() => {
+                        if (context.url) {
+                            request.writeHead(301, {
+                                Location: context.url
+                            });
+                            request.end();
+                        } else {
+                            const renderedHtml = renderToString(app);
+                            const asyncComponentsState = asyncContext.getState();
+                            const state = store.getState();
+                            const initialState = {
+                                ...state,
+                                renderReducer: {
+                                    isServerSide: true,
+                                },
+                            };
 
-                    const html = this._html
-                        .slice(0)
-                        .replace('{title}', state.metaReducer.title)
-                        .replace('{description}', state.metaReducer.description)
-                        .replace('{content}', renderedHtml)
-                        .replace('{state}', JSON.stringify(initialState));
+                            const html = this._html
+                                .slice(0)
+                                .replace('{title}', state.metaReducer.title)
+                                .replace('{description}', state.metaReducer.description)
+                                .replace('{content}', renderedHtml)
+                                .replace('{state}', JSON.stringify(initialState))
+                                .replace('{asyncComponentsState}', JSON.stringify(asyncComponentsState));
 
-                    if (context.url) {
-                        console.info('context', context);
-                    }
+                            reply(html);
 
-                    reply(html);
+                        }
+                    }).catch((error) => {
+                        request.status(500).send(error.message);
+                    });
+
+                    renderToString(app);
+
+                    store.endSaga();
                 });
-
-                renderToString(app);
-
-                store.endSaga();
             },
         });
     }
