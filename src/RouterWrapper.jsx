@@ -7,7 +7,7 @@ import Home from './views/Home';
 import Contact from './views/Contact';
 import FooterAsync from './views/landmarks/FooterAsync';
 import Header from './views/landmarks/Header';
-import NotFound from './views/NotFound';
+import NotFoundAsync from './views/NotFoundAsync';
 
 const RouterWrapper = (props) => {
     const Router = props.isServerSide ? StaticRouter : BrowserRouter;
@@ -38,7 +38,7 @@ const RouterWrapper = (props) => {
                             from="/old-path"
                             to="/"
                         />
-                        <Route component={NotFound} />
+                        <Route component={NotFoundAsync} />
                     </Switch>
                     <FooterAsync />
                 </div>

@@ -38,34 +38,31 @@ class ReactController {
 
                 store.runSaga(rootSaga).done.then(() => {
                     if (context.url) {
-                        request.writeHead(301, {
-                            Location: context.url
-                        });
-                        request.end();
-                    } else {
-                        const renderedHtml = renderToString(app);
-                        const asyncComponentsState = asyncContext.getState();
-                        const state = store.getState();
-                        const initialState = {
-                            ...state,
-                            renderReducer: {
-                                isServerSide: true,
-                            },
-                        };
-
-                        const html = this._html
-                            .slice(0)
-                            .replace('{title}', state.metaReducer.title)
-                            .replace('{description}', state.metaReducer.description)
-                            .replace('{content}', renderedHtml)
-                            .replace('{state}', JSON.stringify(initialState))
-                            .replace('{asyncComponentsState}', serialize(asyncComponentsState));
-
-                        reply(html);
-
+                        return reply().redirect(context.url).permanent().rewritable();
                     }
+
+                    const renderedHtml = renderToString(app);
+                    const asyncComponentsState = asyncContext.getState();
+                    const state = store.getState();
+
+                    const initialState = {
+                        ...state,
+                        renderReducer: {
+                            isServerSide: true,
+                        },
+                    };
+
+                    const html = this._html
+                        .slice(0)
+                        .replace('{title}', initialState.metaReducer.title)
+                        .replace('{description}', initialState.metaReducer.description)
+                        .replace('{content}', renderedHtml)
+                        .replace('{state}', JSON.stringify(initialState))
+                        .replace('{asyncComponentsState}', serialize(asyncComponentsState));
+
+                    return reply(html);
                 }).catch((error) => {
-                    request.status(500).send(error.message);
+                    reply(error.toString());
                 });
 
                 renderToString(app);
