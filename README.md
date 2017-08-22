@@ -27,5 +27,4 @@ Example universal/isomorphic application demonstrating react-hot-loader-3 with w
 
 ##### Other features/examples I am working:
 * Jest / Enzyme
-* Code Splitting
 * A separate TypeScript version
