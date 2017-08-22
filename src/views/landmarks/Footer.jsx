@@ -5,7 +5,7 @@ class Footer extends React.PureComponent { // eslint-disable-line react/prefer-s
     render() {
         return (
             <footer className="footer">
-                <p>&copy; {'Company 2017'}</p>
+                <p>{'This footer is a deferred async component. It does not render server-side. It lazy loads on the client-side.'}</p>
             </footer>
         );
     }

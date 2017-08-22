@@ -15,7 +15,7 @@
     "devServer": "cross-env BABEL_ENV=client NODE_ENV=development nodemon ./dist/server.js",
     "---------- STAGING -----------------------------------------------------------------------------": "",
     "prestaging:build": "cross-env npm run removeAndBuildServer",
-    "staging:build": "cross-env BABEL_ENV=client NODE_ENV=staging webpack -p",
+    "staging:build": "cross-env BABEL_ENV=client NODE_ENV=staging webpack",
     "staging": "cross-env npm run staging:build && npm run start",
     "---------- PRODUCTION --------------------------------------------------------------------------": "",
     "preprod:build": "cross-env npm run removeAndBuildServer",
@@ -105,6 +105,7 @@
     "redux-devtools-extension": "2.13.2",
     "redux-form": "7.0.3",
     "redux-saga": "0.15.6",
+    "serialize-javascript": "1.4.0",
     "webpack": "3.5.5"
   }
 }
