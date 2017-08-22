@@ -1,6 +1,5 @@
 {
   "env": {
-    // jest doesn't take account of BABEL_ENV, you need to set NODE_ENV - https://facebook.github.io/jest/docs/getting-started.html#using-babel
     "client": {
       "presets": [
         ["es2015", {"modules": false}],
@@ -23,7 +22,8 @@
       ],
       "plugins": [
         "transform-class-properties",
-        "transform-object-rest-spread"
+        "transform-object-rest-spread",
+        "system-import-transformer"
       ],
       "ignore": [
         "main.js"
