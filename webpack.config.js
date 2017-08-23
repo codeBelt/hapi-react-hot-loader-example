@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
+const pkg = require('./package.json');
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -108,6 +109,10 @@ const config = {
         isProduction
             ? new webpack.optimize.UglifyJsPlugin()
             : null,
+
+        isDevelopment
+            ? null
+            : new webpack.BannerPlugin(`${pkg.version} ${new Date().toString()}`),
 
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src/index.html'),
