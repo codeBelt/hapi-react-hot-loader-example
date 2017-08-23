@@ -1,6 +1,8 @@
 # `hapi-react-hot-loader-example`
 Example universal/isomorphic application demonstrating react-hot-loader-3 with webpack-3, react and friends, and hapi.
 
+> Found it usefull? [give it a :star:](https://github.com/codeBelt/hapi-react-hot-loader-example/stargazers)
+
 ## get started
 1. $ `yarn`
 2. $ `yarn dev`
