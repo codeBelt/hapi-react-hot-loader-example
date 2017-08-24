@@ -1,11 +1,11 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {shallow, mount, render} from 'enzyme';
-import About from '../../src/views/About';
 import configureStore from 'redux-mock-store';
-import MetaAction from '../../src/store/meta/MetaAction';
+import MetaAction from '../../../src/store/meta/MetaAction';
+import NotFound from '../../../src/views/errors/NotFound';
 
-describe('views/About', () => {
+describe('views/NotFound', () => {
     const initialState = {};
     const mockStore = configureStore();
     let store;
@@ -16,11 +16,11 @@ describe('views/About', () => {
         store = mockStore(initialState);
         wrapper = mount(
             <Provider store={store}>
-                <About />
+                <NotFound />
             </Provider>
         );
 
-        component = wrapper.find(About).first();
+        component = wrapper.find(NotFound).first();
     });
 
     test('should match mapStateToProps', () => {
@@ -33,7 +33,7 @@ describe('views/About', () => {
         const expected = {
             type: MetaAction.SET_META,
             payload: {
-                title: 'About Page',
+                title: '404 Page Not Found',
             },
         };
 

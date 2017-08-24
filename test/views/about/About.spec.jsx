@@ -1,11 +1,11 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {shallow, mount, render} from 'enzyme';
-import Contact from '../../src/views/Contact';
 import configureStore from 'redux-mock-store';
-import MetaAction from '../../src/store/meta/MetaAction';
+import MetaAction from '../../../src/store/meta/MetaAction';
+import About from '../../../src/views/about/About';
 
-describe('views/Contact', () => {
+describe('views/About', () => {
     const initialState = {};
     const mockStore = configureStore();
     let store;
@@ -16,28 +16,24 @@ describe('views/Contact', () => {
         store = mockStore(initialState);
         wrapper = mount(
             <Provider store={store}>
-                <Contact />
+                <About />
             </Provider>
         );
 
-        component = wrapper.find(Contact).first();
+        component = wrapper.find(About).first();
     });
-    // https://github.com/tylercollier/redux-form-test
+
     test('should match mapStateToProps', () => {
         // TODO: how to test mapStateToProps
     });
 
-    test('should test redux form', () => {
-        // TODO: how to test redux-form
-    });
-
     test('should call setMeta action', () => {
         const actions = store.getActions();
-        const actual = actions[1];
+        const actual = actions[0];
         const expected = {
             type: MetaAction.SET_META,
             payload: {
-                title: 'Contact Page',
+                title: 'About Page',
             },
         };
 
@@ -47,7 +43,7 @@ describe('views/Contact', () => {
     test('should call X number of actions', () => {
         const actions = store.getActions();
         const actual = actions.length;
-        const expected = 10;
+        const expected = 1;
 
         expect(actual).toBe(expected);
     });
