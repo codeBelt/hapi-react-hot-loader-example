@@ -34,5 +34,5 @@ const renderApp = (Component) =>
 renderApp(RouterWrapper);
 
 if (module.hot) {
-    module.hot.accept('./RouterWrapper', () => renderApp(RouterWrapper));
+    module.hot.accept('./RouterWrapper', () => renderApp(require('./RouterWrapper').default)); // eslint-disable-line global-require
 }
