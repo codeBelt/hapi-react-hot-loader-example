@@ -2,12 +2,12 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import {StaticRouter} from 'react-router';
-import AboutAsync from './views/AboutAsync';
-import Home from './views/Home';
-import Contact from './views/Contact';
+import AboutAsync from './views/about/AboutAsync';
+import Home from './views/home/Home';
+import Contact from './views/contact/Contact';
 import FooterAsync from './views/landmarks/FooterAsync';
 import Header from './views/landmarks/Header';
-import NotFoundAsync from './views/NotFoundAsync';
+import NotFoundAsync from './views/errors/NotFoundAsync';
 
 const RouterWrapper = (props) => {
     const Router = props.isServerSide ? StaticRouter : BrowserRouter;
