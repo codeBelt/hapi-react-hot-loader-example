@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import MetaAction from '../store/meta/MetaAction';
+import MetaAction from '../../store/meta/MetaAction';
 import {Field, reduxForm} from 'redux-form';
 
 const mapStateToProps = (state) => ({});

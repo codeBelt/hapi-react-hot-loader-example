@@ -15,7 +15,7 @@
     "devServer": "cross-env BABEL_ENV=client NODE_ENV=development nodemon ./dist/server.js",
     "---------- STAGING -----------------------------------------------------------------------------": "",
     "prestaging:build": "cross-env npm run removeAndBuildServer",
-    "staging:build": "cross-env BABEL_ENV=client NODE_ENV=staging webpack -p",
+    "staging:build": "cross-env BABEL_ENV=client NODE_ENV=staging webpack",
     "staging": "cross-env npm run staging:build && npm run start",
     "---------- PRODUCTION --------------------------------------------------------------------------": "",
     "preprod:build": "cross-env npm run removeAndBuildServer",

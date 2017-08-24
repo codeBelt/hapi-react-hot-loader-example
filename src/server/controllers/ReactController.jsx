@@ -28,9 +28,14 @@ class ReactController {
 
                 this._html = (this._html === null) ? await this._loadHtmlFile() : this._html;
 
-                store.runSaga(rootSaga).done.then(async () => {
+                store.runSaga(rootSaga).done.then(() => {
+                    if (context.url) {
+                        return reply().redirect(context.url).permanent().rewritable();
+                    }
+
                     const renderedHtml = renderToString(app);
                     const state = store.getState();
+
                     const initialState = {
                         ...state,
                         renderReducer: {
@@ -40,16 +45,14 @@ class ReactController {
 
                     const html = this._html
                         .slice(0)
-                        .replace('{title}', state.metaReducer.title)
-                        .replace('{description}', state.metaReducer.description)
+                        .replace('{title}', initialState.metaReducer.title)
+                        .replace('{description}', initialState.metaReducer.description)
                         .replace('{content}', renderedHtml)
                         .replace('{state}', JSON.stringify(initialState));
 
-                    if (context.url) {
-                        console.info('context', context);
-                    }
-
-                    reply(html);
+                    return reply(html);
+                }).catch((error) => {
+                    reply(error.toString());
                 });
 
                 renderToString(app);
