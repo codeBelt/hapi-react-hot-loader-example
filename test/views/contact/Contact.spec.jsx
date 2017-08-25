@@ -33,7 +33,7 @@ describe('views/Contact', () => {
 
     test('should call setMeta action', () => {
         const actions = store.getActions();
-        const actual = actions[1];
+        const actual = actions[0];
         const expected = {
             type: MetaAction.SET_META,
             payload: {
