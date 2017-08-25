@@ -22,7 +22,7 @@ class UserReducer {
         },
     };
 
-    static reduce(state = UserReducer._initialState, action) {
+    static reduce(state = UserReducer._initialState, action = {}) {
         switch (action.type) {
             case UserAction.LOAD_USER_SUCCESS:
                 return UserReducer._loadUser(state, action);
