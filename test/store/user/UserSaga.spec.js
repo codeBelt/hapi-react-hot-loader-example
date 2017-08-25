@@ -8,6 +8,8 @@ import UserAction from '../../../src/store/user/UserAction';
 
 describe('UserSaga', () => {
 
+    // https://codereviewvideos.com/course/react-redux-and-redux-saga-with-symfony-3/video/testing-javascript-s-fetch-with-jest-happy-path
+
     beforeEach(() => {
         // global.fetch = jest.fn().mockImplementation(() => {
         //     return new Promise((resolve, reject) => {
