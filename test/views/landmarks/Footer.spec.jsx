@@ -3,7 +3,7 @@ import {shallow, mount, render} from 'enzyme';
 import Footer from '../../../src/views/landmarks/Footer';
 import configureStore from 'redux-mock-store';
 
-describe('views/Footer', () => {
+describe('Footer', () => {
     const initialState = {};
     const mockStore = configureStore();
     let store;

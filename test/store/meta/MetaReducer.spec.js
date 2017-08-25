@@ -2,7 +2,7 @@ import Chance from 'chance';
 import MetaReducer from '../../../src/store/meta/MetaReducer';
 import MetaAction from '../../../src/store/meta/MetaAction';
 
-describe('action/MetaAction', () => {
+describe('MetaReducer', () => {
     const chance = new Chance();
 
     test('should return the initial state', () => {

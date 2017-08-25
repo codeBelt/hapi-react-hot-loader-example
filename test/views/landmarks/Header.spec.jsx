@@ -4,7 +4,7 @@ import Header from '../../../src/views/landmarks/Header';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter as Router } from 'react-router-dom';
 
-describe('views/Header', () => {
+describe('Header', () => {
     const initialState = {};
     const mockStore = configureStore();
     let store;

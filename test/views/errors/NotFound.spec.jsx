@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import MetaAction from '../../../src/store/meta/MetaAction';
 import NotFound from '../../../src/views/errors/NotFound';
 
-describe('views/NotFound', () => {
+describe('NotFound', () => {
     const initialState = {};
     const mockStore = configureStore();
     let store;

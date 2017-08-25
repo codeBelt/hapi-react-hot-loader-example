@@ -1,3 +1,4 @@
+import Chance from 'chance';
 import React from 'react';
 import {Provider} from 'react-redux';
 import {shallow, mount, render} from 'enzyme';
@@ -6,32 +7,33 @@ import MetaAction from '../../../src/store/meta/MetaAction';
 import UserAction from '../../../src/store/user/UserAction';
 import Home from '../../../src/views/home/Home';
 
-describe('views/Home', () => {
+describe('Home', () => {
+    const chance = new Chance();
     const initialState = {
         userReducer: {
-            gender: 'male',
+            gender: chance.string(),
             name: {
-                title: 'mr',
-                first: 'romain',
-                last: 'hoogmoed',
+                title: chance.string(),
+                first: chance.string(),
+                last: chance.string(),
             },
             location: {
-                street: '1861 jan pieterszoon coenstraat',
-                city: 'maasdriel',
-                state: 'zeeland',
-                postcode: 69217,
+                street: chance.string(),
+                city: chance.string(),
+                state: chance.string(),
+                postcode: chance.integer(),
             },
-            email: 'romain.hoogmoed@example.com',
-            dob: '1983-07-14 07:29:45',
-            phone: '(656)-976-4980',
+            email: chance.string(),
+            dob: chance.string(),
+            phone: chance.string(),
             id: {
-                name: 'BSN',
-                value: '04242023',
+                name: chance.string(),
+                value: chance.string(),
             },
             picture: {
-                large: 'https://randomuser.me/api/portraits/men/83.jpg',
-                medium: 'https://randomuser.me/api/portraits/med/men/83.jpg',
-                thumbnail: 'https://randomuser.me/api/portraits/thumb/men/83.jpg',
+                large: chance.string(),
+                medium: chance.string(),
+                thumbnail: chance.string(),
             },
         },
     };

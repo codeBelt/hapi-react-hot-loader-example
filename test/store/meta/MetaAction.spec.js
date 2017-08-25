@@ -1,9 +1,11 @@
+import Chance from 'chance';
 import MetaAction from '../../../src/store/meta/MetaAction';
 
-describe('action/MetaAction', () => {
+describe('MetaAction', () => {
+    const chance = new Chance();
     const expectedData = {
-        title: 'Home Page',
-        description: 'This is the Home Page',
+        title: chance.string(),
+        description: chance.string(),
     };
 
     test('should create an action', () => {
