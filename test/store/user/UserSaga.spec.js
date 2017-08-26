@@ -27,12 +27,15 @@ describe('UserSaga', () => {
         nock.cleanAll();
     });
 
-    test('should loadUser', () => {
-        const expectedBody = {};
+    test('should loadUser', async () => {
+        const expectedBody = {
+            status: 200,
+            results: [{}],
+        };
 
-        // nock('https://randomuser.me')
-        //     .get('/api/?inc=picture,name,email,phone,id,dob')
-        //     .reply(200, expectedBody);
+        nock('https://randomuser.me')
+            .get('/api/?inc=picture,name,email,phone,id,dob')
+            .reply(200, expectedBody);
 
         const generator = UserSaga.loadUser();
 
@@ -41,7 +44,10 @@ describe('UserSaga', () => {
             payload: true,
         }));
 
-        expect(generator.next().value).toEqual({});
+        const response = await generator.next().value;
+        const json = await response.json();
+
+        expect(json).toEqual(expectedBody);
 
         expect(generator.next().value).toEqual(put({
             type: UserAction.LOAD_USER_SUCCESS,
