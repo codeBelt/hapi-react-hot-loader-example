@@ -44,6 +44,7 @@ describe('UserSaga', () => {
             payload: true,
         }));
 
+        // TODO: Do I use await here or should I use generator.next().value ?
         const response = await generator.next().value;
         const json = await response.json();
 
