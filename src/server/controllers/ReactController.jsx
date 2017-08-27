@@ -1,4 +1,7 @@
 import {renderToString} from 'react-dom/server';
+import {AsyncComponentProvider, createAsyncContext} from 'react-async-component';
+import asyncBootstrapper from 'react-async-bootstrapper';
+import serialize from 'serialize-javascript';
 import path from 'path';
 import * as fse from 'fs-extra';
 import * as React from 'react';
@@ -16,24 +19,30 @@ class ReactController {
             path: '/{route*}',
             handler: async (request, reply) => {
                 const store = ProviderService.createProviderStore({}, true);
-                const context = {};
+                const asyncContext = createAsyncContext();
+                const routeContext = {};
                 const app = (
-                    <RouterWrapper
-                        store={store}
-                        location={request.path}
-                        context={context}
-                        isServerSide={true}
-                    />
+                    <AsyncComponentProvider asyncContext={asyncContext}>
+                        <RouterWrapper
+                            store={store}
+                            location={request.path}
+                            context={routeContext}
+                            isServerSide={true}
+                        />
+                    </AsyncComponentProvider>
                 );
 
                 this._html = (this._html === null) ? await this._loadHtmlFile() : this._html;
 
+                await asyncBootstrapper(app);
+
                 store.runSaga(rootSaga).done.then(() => {
-                    if (context.url) {
-                        return reply().redirect(context.url).permanent().rewritable();
+                    if (routeContext.url) {
+                        return reply().redirect(routeContext.url).permanent().rewritable();
                     }
 
                     const renderedHtml = renderToString(app);
+                    const asyncComponentsState = asyncContext.getState();
                     const state = store.getState();
 
                     const initialState = {
@@ -48,7 +57,8 @@ class ReactController {
                         .replace('{title}', initialState.metaReducer.title)
                         .replace('{description}', initialState.metaReducer.description)
                         .replace('{content}', renderedHtml)
-                        .replace('{state}', JSON.stringify(initialState));
+                        .replace('{state}', JSON.stringify(initialState))
+                        .replace('{asyncComponentsState}', serialize(asyncComponentsState));
 
                     return reply(html);
                 }).catch((error) => {

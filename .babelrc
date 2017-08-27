@@ -22,7 +22,8 @@
       ],
       "plugins": [
         "transform-class-properties",
-        "transform-object-rest-spread"
+        "transform-object-rest-spread",
+        "system-import-transformer"
       ],
       "ignore": [
         "main.js"
