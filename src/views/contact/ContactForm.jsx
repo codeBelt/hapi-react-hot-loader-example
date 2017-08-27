@@ -101,7 +101,7 @@ class ContactForm extends React.Component {
     _onFormSubmit(formData) {
         console.info(formData);
 
-        window.alert(JSON.stringify(formData, null, 2));
+        window.alert(JSON.stringify(formData, null, 2)); // eslint-disable-line no-alert
     }
 
     _renderInputField(field) {
