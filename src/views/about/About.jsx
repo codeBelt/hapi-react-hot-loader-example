@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import MetaAction from '../../store/meta/MetaAction';
+import MetaAction from '../../stores/meta/MetaAction';
 
 const mapStateToProps = (state) => ({});
 

@@ -7,7 +7,7 @@ import * as fse from 'fs-extra';
 import * as React from 'react';
 import RouterWrapper from '../../RouterWrapper';
 import ProviderService from '../../services/ProviderService';
-import rootSaga from '../../store/rootSaga';
+import rootSaga from '../../stores/rootSaga';
 
 class ReactController {
 
