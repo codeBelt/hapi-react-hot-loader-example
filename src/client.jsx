@@ -3,6 +3,7 @@ import './assets/styles/styles.css';
 
 import {AppContainer as ReactHotLoader} from 'react-hot-loader';
 import {AsyncComponentProvider} from 'react-async-component';
+import asyncBootstrapper from 'react-async-bootstrapper';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import RouterWrapper from './RouterWrapper';
@@ -21,18 +22,25 @@ const rootEl = document.getElementById('root');
 delete window.__STATE__;
 delete window.__ASYNC_COMPONENTS_STATE__;
 
-const renderApp = (Component) =>
+const composeApp = (Component) => (
+    <ReactHotLoader key={Math.random()}>
+        <AsyncComponentProvider rehydrateState={rehydrateState}>
+            <Component store={store} />
+        </AsyncComponentProvider>
+    </ReactHotLoader>
+);
+
+const renderApp = () => {
+    const routerWrapper = require('./RouterWrapper').default; // eslint-disable-line global-require
+
     ReactDOM.render(
-        <ReactHotLoader key={Math.random()}>
-            <AsyncComponentProvider rehydrateState={rehydrateState}>
-                <Component store={store} />
-            </AsyncComponentProvider>
-        </ReactHotLoader>,
+        composeApp(routerWrapper),
         rootEl,
     );
+};
 
-renderApp(RouterWrapper);
+asyncBootstrapper(composeApp(RouterWrapper)).then(renderApp);
 
 if (module.hot) {
-    module.hot.accept('./RouterWrapper', () => renderApp(require('./RouterWrapper').default)); // eslint-disable-line global-require
+    module.hot.accept('./RouterWrapper', renderApp);
 }
