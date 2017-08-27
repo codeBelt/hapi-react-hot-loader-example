@@ -1,8 +1,8 @@
 import {createStore, applyMiddleware} from 'redux';
-import rootReducer from '../store/rootReducer';
+import rootReducer from '../stores/rootReducer';
 import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
 import createSagaMiddleware, {END} from 'redux-saga';
-import rootSaga from '../store/rootSaga';
+import rootSaga from '../stores/rootSaga';
 
 class ProviderService {
 
@@ -29,8 +29,8 @@ class ProviderService {
 
     static _setupHotReloading(store) {
         if (module.hot) {
-            module.hot.accept('../store/rootReducer', () => {
-                const nextReducer = require('../store/rootReducer').default; // eslint-disable-line global-require
+            module.hot.accept('../stores/rootReducer', () => {
+                const nextReducer = require('../stores/rootReducer').default; // eslint-disable-line global-require
 
                 store.replaceReducer(nextReducer);
             });
