@@ -1,5 +1,5 @@
 import Chance from 'chance';
-import RenderReducer from '../../../src/store/render/RenderReducer';
+import RenderReducer from '../../../src/stores/render/RenderReducer';
 
 describe('RenderReducer', () => {
     const chance = new Chance();

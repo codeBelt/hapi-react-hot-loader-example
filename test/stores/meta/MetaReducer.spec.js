@@ -1,6 +1,6 @@
 import Chance from 'chance';
-import MetaReducer from '../../../src/store/meta/MetaReducer';
-import MetaAction from '../../../src/store/meta/MetaAction';
+import MetaReducer from '../../../src/stores/meta/MetaReducer';
+import MetaAction from '../../../src/stores/meta/MetaAction';
 
 describe('MetaReducer', () => {
     const chance = new Chance();

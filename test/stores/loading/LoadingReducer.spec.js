@@ -1,6 +1,6 @@
 import Chance from 'chance';
-import LoadingReducer from '../../../src/store/loading/LoadingReducer';
-import LoadingAction from '../../../src/store/loading/LoadingAction';
+import LoadingReducer from '../../../src/stores/loading/LoadingReducer';
+import LoadingAction from '../../../src/stores/loading/LoadingAction';
 
 describe('LoadingAction', () => {
     const chance = new Chance();

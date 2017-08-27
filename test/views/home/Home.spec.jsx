@@ -3,8 +3,8 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {shallow, mount, render} from 'enzyme';
 import configureStore from 'redux-mock-store';
-import MetaAction from '../../../src/store/meta/MetaAction';
-import UserAction from '../../../src/store/user/UserAction';
+import MetaAction from '../../../src/stores/meta/MetaAction';
+import UserAction from '../../../src/stores/user/UserAction';
 import Home from '../../../src/views/home/Home';
 
 describe('Home', () => {

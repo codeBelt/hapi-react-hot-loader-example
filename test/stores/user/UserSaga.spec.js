@@ -1,10 +1,10 @@
 import 'fetch-everywhere';
 import jest from 'jest';
 import nock from 'nock';
-import UserSaga from '../../../src/store/user/UserSaga';
+import UserSaga from '../../../src/stores/user/UserSaga';
 import {put} from 'redux-saga/effects';
-import LoadingAction from '../../../src/store/loading/LoadingAction';
-import UserAction from '../../../src/store/user/UserAction';
+import LoadingAction from '../../../src/stores/loading/LoadingAction';
+import UserAction from '../../../src/stores/user/UserAction';
 
 describe('UserSaga', () => {
 

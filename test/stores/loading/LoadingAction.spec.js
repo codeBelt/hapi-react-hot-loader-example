@@ -1,5 +1,5 @@
 import Chance from 'chance';
-import LoadingAction from '../../../src/store/loading/LoadingAction';
+import LoadingAction from '../../../src/stores/loading/LoadingAction';
 
 describe('LoadingAction', () => {
     const chance = new Chance();

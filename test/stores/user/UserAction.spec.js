@@ -1,5 +1,5 @@
 import Chance from 'chance';
-import UserAction from '../../../src/store/user/UserAction';
+import UserAction from '../../../src/stores/user/UserAction';
 
 describe('UserAction', () => {
     const chance = new Chance();

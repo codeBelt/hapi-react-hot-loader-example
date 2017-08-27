@@ -1,5 +1,5 @@
-import UserReducer from '../../../src/store/user/UserReducer';
-import UserAction from '../../../src/store/user/UserAction';
+import UserReducer from '../../../src/stores/user/UserReducer';
+import UserAction from '../../../src/stores/user/UserAction';
 
 describe('UserReducer', () => {
 

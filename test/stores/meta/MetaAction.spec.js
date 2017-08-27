@@ -1,5 +1,5 @@
 import Chance from 'chance';
-import MetaAction from '../../../src/store/meta/MetaAction';
+import MetaAction from '../../../src/stores/meta/MetaAction';
 
 describe('MetaAction', () => {
     const chance = new Chance();

@@ -2,7 +2,7 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {shallow, mount, render} from 'enzyme';
 import configureStore from 'redux-mock-store';
-import MetaAction from '../../../src/store/meta/MetaAction';
+import MetaAction from '../../../src/stores/meta/MetaAction';
 import Contact from '../../../src/views/contact/Contact';
 
 describe('Contact', () => {
