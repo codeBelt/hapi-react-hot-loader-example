@@ -20,13 +20,13 @@ class ReactController {
             handler: async (request, reply) => {
                 const store = ProviderService.createProviderStore({}, true);
                 const asyncContext = createAsyncContext();
-                const context = {};
+                const routeContext = {};
                 const app = (
                     <AsyncComponentProvider asyncContext={asyncContext}>
                         <RouterWrapper
                             store={store}
                             location={request.path}
-                            context={context}
+                            context={routeContext}
                             isServerSide={true}
                         />
                     </AsyncComponentProvider>
@@ -37,8 +37,8 @@ class ReactController {
                 await asyncBootstrapper(app);
 
                 store.runSaga(rootSaga).done.then(() => {
-                    if (context.url) {
-                        return reply().redirect(context.url).permanent().rewritable();
+                    if (routeContext.url) {
+                        return reply().redirect(routeContext.url).permanent().rewritable();
                     }
 
                     const renderedHtml = renderToString(app);
