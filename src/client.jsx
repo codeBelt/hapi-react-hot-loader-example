@@ -8,9 +8,9 @@ import ReactDOM from 'react-dom';
 import RouterWrapper from './RouterWrapper';
 import ProviderService from './services/ProviderService';
 
-const rehydrateState = window['__ASYNC_COMPONENTS_STATE__'];
+const rehydrateState = window.__ASYNC_COMPONENTS_STATE__;
 const initialState = {
-    ...window['__STATE__'],
+    ...window.__STATE__,
     renderReducer: {
         isServerSide: false,
     },
@@ -18,8 +18,8 @@ const initialState = {
 const store = ProviderService.createProviderStore(initialState);
 const rootEl = document.getElementById('root');
 
-delete window['__STATE__'];
-delete window['__ASYNC_COMPONENTS_STATE__'];
+delete window.__STATE__;
+delete window.__ASYNC_COMPONENTS_STATE__;
 
 const renderApp = (Component) =>
     ReactDOM.render(
