@@ -6,7 +6,7 @@ describe('LoadingAction', () => {
     const chance = new Chance();
 
     test('should return the initial state', () => {
-        const actual = LoadingReducer.reduce();
+        const actual = LoadingReducer.reduce(undefined, {});
         const expected = LoadingReducer._initialState;
 
         expect(actual).toEqual(expected);

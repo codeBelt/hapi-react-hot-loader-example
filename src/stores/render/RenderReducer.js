@@ -4,7 +4,7 @@ class RenderReducer {
         isServerSide: true,
     };
 
-    static reduce(state = RenderReducer._initialState, action = {}) {
+    static reduce(state = RenderReducer._initialState, action) {
         return state;
     }
 

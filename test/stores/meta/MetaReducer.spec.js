@@ -6,7 +6,7 @@ describe('MetaReducer', () => {
     const chance = new Chance();
 
     test('should return the initial state', () => {
-        const actual = MetaReducer.reduce();
+        const actual = MetaReducer.reduce(undefined, {});
         const expected = MetaReducer._initialState;
 
         expect(actual).toEqual(expected);

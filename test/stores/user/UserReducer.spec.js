@@ -4,7 +4,7 @@ import UserAction from '../../../src/stores/user/UserAction';
 describe('UserReducer', () => {
 
     test('should return the initial state', () => {
-        const actual = UserReducer.reduce();
+        const actual = UserReducer.reduce(undefined, {});
         const expected = UserReducer._initialState;
 
         expect(actual).toEqual(expected);

@@ -6,7 +6,7 @@ class LoadingReducer {
         isLoading: false,
     };
 
-    static reduce(state = LoadingReducer._initialState, action = {}) {
+    static reduce(state = LoadingReducer._initialState, action) {
         switch (action.type) {
             case LoadingAction.SET_LOADING:
                 return LoadingReducer._setLoading(state, action);

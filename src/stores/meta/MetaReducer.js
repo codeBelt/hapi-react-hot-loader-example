@@ -7,7 +7,7 @@ class MetaReducer {
         description: '',
     };
 
-    static reduce(state = MetaReducer._initialState, action = {}) {
+    static reduce(state = MetaReducer._initialState, action) {
         switch (action.type) {
             case MetaAction.SET_META:
                 return MetaReducer._setMeta(state, action);

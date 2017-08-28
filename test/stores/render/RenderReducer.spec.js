@@ -5,7 +5,7 @@ describe('RenderReducer', () => {
     const chance = new Chance();
 
     test('should return the initial state', () => {
-        const actual = RenderReducer.reduce();
+        const actual = RenderReducer.reduce(undefined, {});
         const expected = RenderReducer._initialState;
 
         expect(actual).toEqual(expected);
