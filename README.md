@@ -31,4 +31,3 @@ Example universal/isomorphic application demonstrating react-hot-loader-3 with w
 
 ##### Other features/examples I am working:
 * Jest / Enzyme
-* A separate TypeScript version
