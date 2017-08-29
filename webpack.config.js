@@ -36,6 +36,7 @@ const config = {
 
     output: {
         path: path.join(__dirname, 'dist/public/'),
+        chunkFilename: 'assets/scripts/[name].[chunkhash].js',
         filename: isDevelopment
             ? 'main.js'
             : 'assets/scripts/[name].[chunkhash].js',
