@@ -13,7 +13,6 @@ const HOST = process.env.HOST || 'localhost';
 const NODE_ENV = process.env.NODE_ENV || 'production';
 const isProduction = (NODE_ENV === 'production');
 const isDevelopment = (NODE_ENV === 'development');
-const isNotDevelopment = isDevelopment === false;
 
 const config = {
     entry: isDevelopment
@@ -71,9 +70,9 @@ const config = {
     },
 
     plugins: [
-        isNotDevelopment
-            ? new SimpleProgressPlugin()
-            : null,
+        isDevelopment
+            ? null
+            : new SimpleProgressPlugin(),
 
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
