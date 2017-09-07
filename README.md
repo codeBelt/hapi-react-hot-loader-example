@@ -1,7 +1,9 @@
 # `hapi-react-hot-loader-example`
 Example universal/isomorphic application demonstrating react-hot-loader-3 with webpack-3, react and friends, and hapi.
 
-> Found it usefull? [give it a :star:](https://github.com/codeBelt/hapi-react-hot-loader-example/stargazers)
+>  [Check out the TypeScript version here](https://github.com/codeBelt/typescript-hapi-react-hot-loader-example)
+
+> Found this usefull? give it a :star:
 
 ## get started
 1. $ `yarn`
@@ -29,4 +31,3 @@ Example universal/isomorphic application demonstrating react-hot-loader-3 with w
 
 ##### Other features/examples I am working:
 * Jest / Enzyme
-* A separate TypeScript version

@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom';
 import RouterWrapper from './RouterWrapper';
 import ProviderService from './services/ProviderService';
 
-const rehydrateState = window.__ASYNC_COMPONENTS_STATE__;
+const codeSplittingState = window.__ASYNC_COMPONENTS_STATE__;
 const initialState = {
     ...window.__STATE__,
     renderReducer: {
@@ -24,7 +24,7 @@ delete window.__ASYNC_COMPONENTS_STATE__;
 
 const composeApp = (Component) => (
     <ReactHotLoader key={Math.random()}>
-        <AsyncComponentProvider rehydrateState={rehydrateState}>
+        <AsyncComponentProvider rehydrateState={codeSplittingState}>
             <Component store={store} />
         </AsyncComponentProvider>
     </ReactHotLoader>

@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
 const pkg = require('./package.json');
@@ -36,6 +36,7 @@ const config = {
 
     output: {
         path: path.join(__dirname, 'dist/public/'),
+        chunkFilename: 'assets/scripts/[name].[chunkhash].js',
         filename: isDevelopment
             ? 'main.js'
             : 'assets/scripts/[name].[chunkhash].js',
@@ -69,7 +70,9 @@ const config = {
     },
 
     plugins: [
-        new ProgressBarPlugin(),
+        isDevelopment
+            ? null
+            : new SimpleProgressPlugin(),
 
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
