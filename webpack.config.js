@@ -145,6 +145,14 @@ const config = {
         ? 'none'
         : 'cheap-module-eval-source-map',
 
+    devServer: {
+        contentBase: path.join(__dirname, 'dist/public'),
+        historyApiFallback: true,
+        compress: true,
+        hot: true,
+        port: PORT,
+    },
+
     performance: {
         maxAssetSize: 500000,
     },
