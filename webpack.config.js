@@ -70,9 +70,7 @@ const config = {
     },
 
     plugins: [
-        isDevelopment
-            ? null
-            : new SimpleProgressPlugin(),
+        new SimpleProgressPlugin(),
 
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
@@ -143,7 +141,7 @@ const config = {
 
     devtool: isProduction
         ? 'none'
-        : 'cheap-module-eval-source-map',
+        : 'source-map',
 
     performance: {
         maxAssetSize: 500000,
