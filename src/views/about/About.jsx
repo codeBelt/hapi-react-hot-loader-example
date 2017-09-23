@@ -1,6 +1,17 @@
+/* @flow */
 import * as React from 'react';
 import {connect} from 'react-redux';
 import MetaAction from '../../stores/meta/MetaAction';
+import Test from './Test';
+import IMetaReducerState from '../../types/IMetaReducerState';
+
+type IState = {}
+type IProps = {}
+type IStateToProps = {}
+type IDispatchToProps = {
+    setMeta: (meta: IMetaReducerState) => void;
+}
+
 
 const mapStateToProps = (state) => ({});
 
@@ -8,7 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
     setMeta: (meta) => dispatch(MetaAction.setMeta(meta)),
 });
 
-class About extends React.Component {
+class About extends React.Component<IStateToProps & IDispatchToProps & IProps, IState> {
 
     componentWillMount() {
         this.props.setMeta({title: 'About Page'});
@@ -18,6 +29,7 @@ class About extends React.Component {
         return (
             <div>
                 <div className="jumbotron">
+                    <Test label={'hey'} />
                     <h1 className="display-3">{'About'}</h1>
                     <p className="lead">{'This is a React Universal application that uses the libraries below.'}</p>
                 </div>

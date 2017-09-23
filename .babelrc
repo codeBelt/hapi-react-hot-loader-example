@@ -3,6 +3,7 @@
     "client": {
       "presets": [
         ["es2015", {"modules": false}],
+        "flow",
         "stage-2",
         "react"
       ],
@@ -12,6 +13,7 @@
     },
     "server": {
       "presets": [
+        "flow",
         "stage-2",
         "react",
         ["env", {

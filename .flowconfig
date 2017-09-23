@@ -1,0 +1,9 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/redux-form/.*
+
+[include]
+
+[libs]
+
+[options]
+all=false
