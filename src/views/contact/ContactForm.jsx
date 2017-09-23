@@ -3,13 +3,13 @@ import {reduxForm, Field} from 'redux-form';
 
 class ContactForm extends React.Component {
 
-    _handleSubmitHandler = (formData) => this._onFormSubmit(formData);
+    _onSubmitHandler = this._onSubmit.bind(this);
 
     render() {
         const {handleSubmit, reset} = this.props;
 
         return (
-            <form onSubmit={handleSubmit(this._handleSubmitHandler)}>
+            <form onSubmit={handleSubmit(this._onSubmitHandler)}>
                 <div className="form-group">
                     <Field
                         component={this._renderInputField}
@@ -98,7 +98,7 @@ class ContactForm extends React.Component {
         );
     }
 
-    _onFormSubmit(formData) {
+    _onSubmit(formData) {
         console.info(formData);
 
         window.alert(JSON.stringify(formData, null, 2)); // eslint-disable-line no-alert
