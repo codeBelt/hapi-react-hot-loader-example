@@ -3,23 +3,21 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import MetaAction from '../../stores/meta/MetaAction';
 import Test from './Test';
-import IMetaReducerState from '../../types/IMetaReducerState';
+import type TMetaReducerState from '../../types/TMetaReducerState';
 
-type IState = {}
-type IProps = {}
-type IStateToProps = {}
-type IDispatchToProps = {
-    setMeta: (meta: IMetaReducerState) => void;
+type TState = {}
+type TProps = {}
+type TStateToProps = {}
+type TDispatchToProps = {
+    setMeta: (meta: TMetaReducerState) => void;
 }
 
-
 const mapStateToProps = (state) => ({});
-
 const mapDispatchToProps = (dispatch) => ({
     setMeta: (meta) => dispatch(MetaAction.setMeta(meta)),
 });
 
-class About extends React.Component<IStateToProps & IDispatchToProps & IProps, IState> {
+class About extends React.Component<TStateToProps & TDispatchToProps & TProps, TState> {
 
     componentWillMount() {
         this.props.setMeta({title: 'About Page'});
