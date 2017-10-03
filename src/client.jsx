@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './assets/styles/styles.css';
 
+import 'fetch-everywhere';
 import {AppContainer as ReactHotLoader} from 'react-hot-loader';
 import {AsyncComponentProvider} from 'react-async-component';
 import asyncBootstrapper from 'react-async-bootstrapper';
