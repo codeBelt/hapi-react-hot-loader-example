@@ -24,7 +24,7 @@ class About extends React.Component {
 
                 <div className="row marketing">
                     <div className="col-lg-6">
-                        <h4>{'Webpack 2'}</h4>
+                        <h4>{'Webpack 3'}</h4>
                         <p>{'Facilitates creating builds for production, staging, and development.'}</p>
 
                         <h4>{'React'}</h4>
