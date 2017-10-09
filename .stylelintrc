@@ -1,0 +1,11 @@
+{
+  "extends": "stylelint-config-standard",
+	"plugins": [
+		"stylelint-order"
+	],
+  "rules": {
+    "indentation": 4,
+    "color-hex-length": "long",
+    "order/properties-alphabetical-order": true
+  }
+}

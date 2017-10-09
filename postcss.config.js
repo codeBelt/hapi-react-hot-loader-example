@@ -6,7 +6,7 @@ module.exports = {
             browsers: ['last 2 versions'],
         },
         'cssnano': {
-            autoprefixer: false, // cssnext handles ap
+            autoprefixer: false,
             discardComments: {
                 removeAll: true,
             },
