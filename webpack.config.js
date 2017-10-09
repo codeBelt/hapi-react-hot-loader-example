@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
 const pkg = require('./package.json');
 
@@ -14,7 +15,7 @@ const NODE_ENV = process.env.NODE_ENV || 'production';
 const isProduction = (NODE_ENV === 'production');
 const isDevelopment = (NODE_ENV === 'development');
 
-const config = {
+const webpackConfig = {
     entry: isDevelopment
         ? [
             'babel-polyfill',
@@ -52,10 +53,19 @@ const config = {
                         use: [
                             {
                                 loader: 'css-loader',
-                                options: {minimize: true},
+                                options: {
+                                    minimize: isProduction,
+                                    sourceMap: !isProduction
+                                },
                             },
                             {
                                 loader: 'postcss-loader',
+                                options: {
+                                    sourceMap: !isProduction,
+                                    config: {
+                                        path: './postcss.config.js',
+                                    },
+                                },
                             },
                         ],
                     })
@@ -124,9 +134,10 @@ const config = {
 
         new CopyWebpackPlugin([
             {
-                context: 'src/assets/media',
+                context: 'src/assets',
                 from: '**/*',
-                to: 'assets/media',
+                to: 'assets',
+                ignore: ['styles/**/*'],
             },
         ]),
 
@@ -137,6 +148,8 @@ const config = {
                     : {userAgent: '*', disallow: '/'},
             ],
         }),
+
+        new WriteFilePlugin(), // Forces webpack-dev-server to write files.
     ].filter(Boolean),
 
     devtool: isProduction
@@ -148,4 +161,4 @@ const config = {
     },
 };
 
-module.exports = config;
+module.exports = webpackConfig;
