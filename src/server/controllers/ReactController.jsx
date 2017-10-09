@@ -18,7 +18,7 @@ class ReactController {
             method: 'GET',
             path: '/{route*}',
             handler: async (request, reply) => {
-                const store = ProviderService.createProviderStore({}, true);
+                const store = ProviderService.createProviderStore({}, null, true);
                 const asyncContext = createAsyncContext();
                 const routeContext = {};
                 const app = (
