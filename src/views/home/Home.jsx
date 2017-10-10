@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
+import {push} from 'react-router-redux';
 import UserAction from '../../stores/user/UserAction';
 import MetaAction from '../../stores/meta/MetaAction';
 
@@ -8,11 +9,14 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+    historyPush: (route) => dispatch(push(route)),
     loadUser: () => dispatch(UserAction.loadUser()),
     setMeta: (meta) => dispatch(MetaAction.setMeta(meta)),
 });
 
 class Home extends React.Component {
+
+    _onClickPushExampleHandler = this._onClickPushExample.bind(this);
 
     componentWillMount() {
         this.props.setMeta({
@@ -42,8 +46,15 @@ class Home extends React.Component {
                         </button>
                     </p>
                 </div>
+                <button onClick={this._onClickPushExampleHandler}>{'Go to About'}</button>
             </div>
         );
+    }
+
+    _onClickPushExample(event) {
+        event.preventDefault();
+
+        this.props.historyPush('/About');
     }
 
 }
