@@ -10,6 +10,7 @@ import Contact from './views/contact/Contact';
 import FooterAsync from './views/landmarks/FooterAsync';
 import Header from './views/landmarks/Header';
 import NotFoundAsync from './views/errors/NotFoundAsync';
+import ModalHub from './views/modals/ModalHub';
 
 const RouterWrapper = (props) => {
     const Router = props.isServerSide ? StaticRouter : ConnectedRouter;
@@ -46,6 +47,7 @@ const RouterWrapper = (props) => {
                         <Route component={NotFoundAsync} />
                     </Switch>
                     <FooterAsync />
+                    <ModalHub />
                 </div>
             </Router>
         </Provider>
