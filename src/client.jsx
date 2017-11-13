@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import './assets/styles/styles.css';
+import './assets/styles/screen.css';
 
 import 'fetch-everywhere';
 import React from 'react';
@@ -20,7 +20,7 @@ const initialState = {
         isServerSide: false,
     },
 };
-const history: History = createBrowserHistory();
+const history = createBrowserHistory();
 const store = ProviderService.createProviderStore(initialState, history);
 const rootEl = document.getElementById('root');
 
