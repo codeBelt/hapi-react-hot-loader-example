@@ -38,7 +38,7 @@ const composeApp = (Component) => (
 const renderApp = () => {
     const routerWrapper = require('./RouterWrapper').default; // eslint-disable-line global-require
 
-    ReactDOM.render(
+    ReactDOM.hydrate(
         composeApp(routerWrapper),
         rootEl,
     );
