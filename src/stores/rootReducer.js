@@ -9,12 +9,12 @@ import ModalReducer from './modal/ModalReducer';
 
 const reducers = {
     form: formReducer,
-    loadingReducer: LoadingReducer.reduce,
-    metaReducer: MetaReducer.reduce,
-    modalReducer: ModalReducer.reduce,
-    renderReducer: RenderReducer.reduce,
+    loadingReducer: LoadingReducer.reducer,
+    metaReducer: MetaReducer.reducer,
+    modalReducer: ModalReducer.reducer,
+    renderReducer: RenderReducer.reducer,
     router: routerReducer,
-    userReducer: UserReducer.reduce,
+    userReducer: UserReducer.reducer,
 };
 
 export default combineReducers(reducers);

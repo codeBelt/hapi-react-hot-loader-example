@@ -7,7 +7,7 @@ class ModalReducer {
         modalList: [],
     };
 
-    static reduce(state = ModalReducer._initialState, action) {
+    static reducer(state = ModalReducer._initialState, action) {
         switch (action.type) {
             case ModalAction.ADD_MODAL:
                 return ModalReducer._addModal(state, action);
