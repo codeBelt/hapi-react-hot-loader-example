@@ -6,15 +6,7 @@
     position: fixed;
     right: 0;
     top: 0;
-    z-index: var(--Z_INDEX_MODAL);
-
-    @media (--SM) {
-        padding-top: 50px;
-    }
-
-    @media (--MD) {
-        padding-top: 100px;
-    }
+    z-index: 6;
 }
 
 .modal-overlay {
@@ -23,11 +15,10 @@
     bottom: 0;
     cursor: pointer;
     left: 0;
-    opacity: 0;
     position: fixed;
     right: 0;
     top: 0;
-    z-index: var(--Z_INDEX_MODAL_OVERLAY);
+    z-index: 7;
 }
 
 .modal-overlay_required {
@@ -46,23 +37,12 @@
     margin: auto auto 5px;
     max-width: 800px;
     min-height: 250px;
-    opacity: 0;
     overflow: hidden;
     padding: 20px;
     position: relative;
     transform: translateY(-5px);
     width: calc(100% - 10px);
-    z-index: var(--Z_INDEX_MODAL_CONTENT);
-
-    @media (--SM) {
-        margin-bottom: 20px;
-        transform: translateY(-50px);
-    }
-
-    @media (--MD) {
-        margin-bottom: 20px;
-        transform: translateY(-100px);
-    }
+    z-index: 8;
 }
 
 .modal-content_sm {
@@ -147,11 +127,6 @@
 
 .modal-footer_stack {
     display: block;
-
-    @media (--XS) {
-        display: flex;
-        justify-content: flex-end;
-    }
 
     & > * {
         margin-bottom: 10px;

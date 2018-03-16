@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import './assets/styles/screen.css';
+import './assets/styles/screen.scss';
 
 import 'fetch-everywhere';
 import React from 'react';
