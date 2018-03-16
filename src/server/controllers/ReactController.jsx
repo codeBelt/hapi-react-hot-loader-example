@@ -1,8 +1,8 @@
 import {renderToString} from 'react-dom/server';
 import {AsyncComponentProvider, createAsyncContext} from 'react-async-component';
 import asyncBootstrapper from 'react-async-bootstrapper';
-import serialize from 'serialize-javascript';
-import path from 'path';
+import * as serialize from 'serialize-javascript';
+import * as path from 'path';
 import * as fse from 'fs-extra';
 import * as React from 'react';
 import RouterWrapper from '../../RouterWrapper';
@@ -17,7 +17,7 @@ class ReactController {
         server.route({
             method: 'GET',
             path: '/{route*}',
-            handler: async (request, reply) => {
+            handler: async (request, h) => {
                 const store = ProviderService.createProviderStore({}, null, true);
                 const asyncContext = createAsyncContext();
                 const routeContext = {};
@@ -36,11 +36,19 @@ class ReactController {
 
                 await asyncBootstrapper(app);
 
-                store.runSaga(rootSaga).done.then(() => {
-                    if (routeContext.url) {
-                        return reply().redirect(routeContext.url).permanent().rewritable();
-                    }
+                const sagaDone = store.runSaga(rootSaga).done;
 
+                renderToString(app);
+
+                store.endSaga();
+
+                await sagaDone;
+
+                if (routeContext.url) {
+                    return h.redirect(routeContext.url);
+                }
+
+                try {
                     const renderedHtml = renderToString(app);
                     const asyncComponentsState = asyncContext.getState();
                     const state = store.getState();
@@ -60,14 +68,10 @@ class ReactController {
                         .replace('{state}', JSON.stringify(initialState))
                         .replace('{asyncComponentsState}', serialize(asyncComponentsState));
 
-                    return reply(html);
-                }).catch((error) => {
-                    reply(error.toString());
-                });
-
-                renderToString(app);
-
-                store.endSaga();
+                    return h.response(html);
+                } catch (error) {
+                    return error.toString();
+                }
             },
         });
     }

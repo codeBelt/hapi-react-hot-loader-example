@@ -1,35 +1,29 @@
-import Webpack from 'webpack';
+import * as HapiWebpackPlugin from 'hapi-webpack-plugin';
+import * as notifier from 'node-notifier';
+import * as Webpack from 'webpack';
 import ServerManager from '../ServerManager';
-import HapiWebpackPlugin from 'hapi-webpack-plugin';
-import notifier from 'node-notifier';
 
 class HapiWebpackHotPlugin {
 
-    constructor(server) {
+    get plugin() {
         const config = require('../../../webpack.config.js'); // eslint-disable-line global-require
         const compiler = Webpack(config);
 
         compiler.plugin('done', (stats) => this._onDone(stats));
 
-        const options = {
-            assets: {
-                // webpack-dev-middleware options - https://github.com/webpack/webpack-dev-middleware
-                index: '/public/index.html',
-            },
-            hot: {
-                // webpack-hot-middleware options - https://github.com/glenjamin/webpack-hot-middleware
-            },
-            compiler,
+        const assets = {
+            // webpack-dev-middleware options - See https://github.com/webpack/webpack-dev-middleware
+            index: '/public/index.html',
         };
 
-        server.register({
-            register: HapiWebpackPlugin,
-            options,
-        }, (error) => {
-            if (error) {
-                console.error(error);
-            }
-        });
+        const hot = {
+            // webpack-hot-middleware options - See https://github.com/glenjamin/webpack-hot-middleware
+        };
+
+        return {
+            plugin: HapiWebpackPlugin,
+            options: {compiler, assets, hot},
+        };
     }
 
     _onDone(stats) {

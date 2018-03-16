@@ -1,26 +1,30 @@
 import * as Hapi from 'hapi';
 
-const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || 'localhost';
-const NODE_ENV = process.env.NODE_ENV;
-
 class ServerManager {
 
-    static log = () => console.info(`\n\nServer running in ${NODE_ENV} mode at: http://${HOST}:${PORT}\n`);
+    static PORT = parseInt(process.env.PORT, 10) || 3000;
+    static HOST = process.env.HOST || 'localhost';
+    static NODE_ENV = process.env.NODE_ENV;
 
-    _server = new Hapi.Server({debug: {request: ['error']}});
+    isDevelopment = (ServerManager.NODE_ENV === 'development');
 
-    isDevelopment = (NODE_ENV === 'development');
+    _server = null;
 
     get server() {
         return this._server;
     }
 
     constructor() {
-        this._server.connection({
-            host: HOST,
-            port: PORT,
-        });
+        const options = {
+            host: ServerManager.HOST,
+            port: ServerManager.PORT,
+        };
+
+        this._server = new Hapi.Server(options);
+    }
+
+    static log() {
+        console.info(`\n\nServer running in ${ServerManager.NODE_ENV} mode at: http://${ServerManager.HOST}:${ServerManager.PORT}\n`);
     }
 
     async registerPlugin(pluginConfig) {
@@ -31,16 +35,16 @@ class ServerManager {
         controller.mapRoutes(this._server);
     }
 
-    startServer() {
-        this._server.start((error) => {
-            if (error) {
-                throw error;
-            }
+    async startServer() {
+        try {
+            await this._server.start();
 
             if (!this.isDevelopment) {
                 ServerManager.log();
             }
-        });
+        } catch (err) {
+            console.error(err);
+        }
     }
 
 }
