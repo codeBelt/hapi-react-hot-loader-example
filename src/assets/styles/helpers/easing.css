@@ -1,9 +1,0 @@
-/* stylelint-disable number-no-trailing-zeros */
-:root {
-    --EASE_IN_QUAD: cubic-bezier(0.550, 0.085, 0.680, 0.530);
-    --EASE_IN_SINE: cubic-bezier(0.470, 0.000, 0.745, 0.715);
-    --EASE_OUT_SINE: cubic-bezier(0.390, 0.575, 0.565, 1.000);
-    --EASE_OUT_BACK: cubic-bezier(0.175, 0.885, 0.320, 1.275);
-    --EASE_OUT_QUAD: cubic-bezier(0.250, 0.460, 0.450, 0.940);
-    --EASE_OUT_CUBIC: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-}
