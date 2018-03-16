@@ -1,4 +1,4 @@
-import * as Hapi from 'hapi';
+import Hapi from 'hapi';
 
 class ServerManager {
 

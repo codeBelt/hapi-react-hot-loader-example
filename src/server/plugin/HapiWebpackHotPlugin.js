@@ -1,6 +1,6 @@
-import * as HapiWebpackPlugin from 'hapi-webpack-plugin';
-import * as notifier from 'node-notifier';
-import * as Webpack from 'webpack';
+import HapiWebpackPlugin from 'hapi-webpack-plugin';
+import notifier from 'node-notifier';
+import Webpack from 'webpack';
 import ServerManager from '../ServerManager';
 
 class HapiWebpackHotPlugin {

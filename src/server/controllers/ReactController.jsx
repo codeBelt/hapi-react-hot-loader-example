@@ -1,10 +1,10 @@
 import {renderToString} from 'react-dom/server';
 import {AsyncComponentProvider, createAsyncContext} from 'react-async-component';
 import asyncBootstrapper from 'react-async-bootstrapper';
-import * as serialize from 'serialize-javascript';
-import * as path from 'path';
-import * as fse from 'fs-extra';
-import * as React from 'react';
+import serialize from 'serialize-javascript';
+import path from 'path';
+import fse from 'fs-extra';
+import React from 'react';
 import RouterWrapper from '../../RouterWrapper';
 import ProviderService from '../../services/ProviderService';
 import rootSaga from '../../stores/rootSaga';
