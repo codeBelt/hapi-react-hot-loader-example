@@ -1,6 +1,6 @@
 import {renderToString} from 'react-dom/server';
 import {AsyncComponentProvider, createAsyncContext} from 'react-async-component';
-import asyncBootstrapper from 'react-async-bootstrapper';
+import bootstrap from 'react-async-bootstrapper';
 import serialize from 'serialize-javascript';
 import path from 'path';
 import fse from 'fs-extra';
@@ -34,7 +34,7 @@ class ReactController {
 
                 this._html = (this._html === null) ? await this._loadHtmlFile() : this._html;
 
-                await asyncBootstrapper(app);
+                await bootstrap(app);
 
                 const sagaDone = store.runSaga(rootSaga).done;
 

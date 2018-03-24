@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import {createBrowserHistory} from 'history';
 import {AppContainer as ReactHotLoader} from 'react-hot-loader';
 import {AsyncComponentProvider} from 'react-async-component';
-import asyncBootstrapper from 'react-async-bootstrapper';
+import bootstrap from 'react-async-bootstrapper';
 import RouterWrapper from './RouterWrapper';
 import ProviderService from './services/ProviderService';
 
@@ -44,7 +44,7 @@ const renderApp = () => {
     );
 };
 
-asyncBootstrapper(composeApp(RouterWrapper)).then(renderApp);
+bootstrap(composeApp(RouterWrapper)).then(renderApp);
 
 if (module.hot) {
     module.hot.accept('./RouterWrapper', renderApp);
