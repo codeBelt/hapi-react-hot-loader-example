@@ -4,10 +4,21 @@
       "presets": [
         ["es2015", {"modules": false}],
         "stage-2",
-        "react"
+        "react",
+        ["env", {
+          "targets": {
+            "browsers": [
+              "last 2 versions"
+            ]
+          },
+          "useBuiltIns": false
+        }]
       ],
       "plugins": [
-        "react-hot-loader/babel"
+        "react-hot-loader/babel",
+        "transform-class-properties",
+        "transform-object-rest-spread",
+        "system-import-transformer"
       ]
     },
     "server": {

@@ -1,0 +1,40 @@
+.inputField-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.inputField-input {
+    appearance: none;
+    background-color: #ffffff;
+    border: 1px solid $COLOR_DARKGRAY_MEDIUM;
+    box-shadow: inset 0 0 0 1px rgba($COLOR_PRIMARY, 0);
+    font-size: 16px;
+    max-width: 100%;
+    padding: 9px;
+    transition:
+        border-color 300ms $EASE_IN_QUAD,
+        box-shadow 300ms $EASE_IN_QUAD;
+
+    &:focus {
+        border-color: $COLOR_PRIMARY;
+        box-shadow: inset 0 0 0 1px rgba($COLOR_PRIMARY, 100%);
+        transition:
+            border-color 250ms $EASE_OUT_QUAD,
+            box-shadow 250ms $EASE_OUT_QUAD;
+    }
+}
+
+.inputField_inline {
+    align-items: center;
+    display: flex;
+}
+
+.inputField_inline .inputField-label {
+    flex: 1 0 auto;
+    margin-bottom: 0;
+    margin-right: 12px;
+}
+
+.inputField_noLabel .inputField-label {
+    @include isVisuallyHidden;
+}

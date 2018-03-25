@@ -4,3 +4,5 @@ npm-debug.log
 dist
 *.swp
 .yarnclean
+yarn-error.log
+.idea

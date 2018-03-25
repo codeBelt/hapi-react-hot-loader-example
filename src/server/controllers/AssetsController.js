@@ -6,8 +6,10 @@ class AssetsController {
         server.route({
             method: 'GET',
             path: '/assets/{file*}',
-            handler: (request, reply) => {
-                reply.file(path.resolve(__dirname, `../../public${request.path}`));
+            handler: (request, h) => {
+                const file = path.resolve(__dirname, `../../public${request.path}`);
+
+                return h.file(file);
             },
         });
     }

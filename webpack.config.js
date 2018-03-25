@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin').default;
 const pkg = require('./package.json');
 
@@ -14,7 +15,7 @@ const NODE_ENV = process.env.NODE_ENV || 'production';
 const isProduction = (NODE_ENV === 'production');
 const isDevelopment = (NODE_ENV === 'development');
 
-const config = {
+const webpackConfig = {
     entry: isDevelopment
         ? [
             'babel-polyfill',
@@ -45,17 +46,23 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.css$/,
+                test: /\.s?css$/,
                 use: ['css-hot-loader'].concat(
                     ExtractTextPlugin.extract({
                         fallback: 'style-loader',
                         use: [
                             {
                                 loader: 'css-loader',
-                                options: {minimize: true},
+                                options: {
+                                    minimize: isProduction,
+                                    sourceMap: !isProduction
+                                },
                             },
                             {
-                                loader: 'postcss-loader',
+                                loader: 'sass-loader',
+                                options: {
+                                    sourceMap: !isProduction
+                                }
                             },
                         ],
                     })
@@ -70,9 +77,7 @@ const config = {
     },
 
     plugins: [
-        isDevelopment
-            ? null
-            : new SimpleProgressPlugin(),
+        new SimpleProgressPlugin(),
 
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
@@ -126,9 +131,10 @@ const config = {
 
         new CopyWebpackPlugin([
             {
-                context: 'src/assets/media',
+                context: 'src/assets',
                 from: '**/*',
-                to: 'assets/media',
+                to: 'assets',
+                ignore: ['styles/**/*'],
             },
         ]),
 
@@ -139,11 +145,13 @@ const config = {
                     : {userAgent: '*', disallow: '/'},
             ],
         }),
+
+        new WriteFilePlugin(), // Forces webpack-dev-server to write files.
     ].filter(Boolean),
 
     devtool: isProduction
         ? 'none'
-        : 'cheap-module-eval-source-map',
+        : 'source-map',
 
     devServer: {
         contentBase: path.join(__dirname, 'dist/public'),
@@ -158,4 +166,4 @@ const config = {
     },
 };
 
-module.exports = config;
+module.exports = webpackConfig;

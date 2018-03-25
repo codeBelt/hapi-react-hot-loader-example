@@ -1,0 +1,81 @@
+.modalForm {
+    text-align: left;
+}
+
+.modalForm-warning {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.modalForm-item {
+    margin-bottom: 20px;
+
+    @media (--XS) {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -20px;
+    }
+
+    @media (--SM) {
+        flex-wrap: nowrap;
+        margin-bottom: 10px;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    & > * {
+        @media (--XS) {
+            flex: 0 0 auto;
+            padding-left: 20px;
+        }
+    }
+}
+
+.modalForm-item-label {
+    display: block;
+    margin-bottom: 5px;
+
+    @media (--XS) {
+        width: 100%;
+    }
+
+    @media (--SM) {
+        margin-bottom: 0;
+        text-align: right;
+        width: 25%;
+    }
+}
+
+.modalForm-item-input {
+    @media (--XS) {
+        width: 55%;
+    }
+
+    @media (--SM) {
+        width: 45%;
+    }
+}
+
+.modalForm-item-input + .modalForm-item-modifier {
+    margin-top: 10px;
+
+    @media (--XS) {
+        margin-top: 0;
+    }
+}
+
+.modalForm-item-modifier {
+    text-align: right;
+
+    @media (--XS) {
+        text-align: left;
+        width: 45%;
+    }
+
+    @media (--SM) {
+        width: 30%;
+    }
+}

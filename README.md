@@ -1,9 +1,11 @@
 # `hapi-react-hot-loader-example`
-Example universal/isomorphic application demonstrating react-hot-loader-3 with webpack-3, react and friends, and hapi.
+Example universal/isomorphic application demonstrating react-hot-loader-3 with webpack-3, react and friends, async code splitting, and hapi.
 
 >  [Check out the TypeScript version here](https://github.com/codeBelt/typescript-hapi-react-hot-loader-example)
 
 > Found this usefull? give it a :star:
+
+**Windows users see the last section of this README**
 
 ## get started
 1. $ `yarn`
@@ -31,3 +33,8 @@ Example universal/isomorphic application demonstrating react-hot-loader-3 with w
 
 ##### Other features/examples I am working:
 * Jest / Enzyme
+
+## Window Users
+Use  $ `yarn devWindows` during development. Note `rs` to restart nodemon will not work on windows.
+
+If you want `rs` to restart nodemon you will need to run `yarn watchServer` and `yarn devServer` in two separate terminals.
