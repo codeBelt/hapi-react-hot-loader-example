@@ -1,22 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './assets/styles/screen.scss';
 
-import 'fetch-everywhere';
+import bootstrap from 'react-async-bootstrapper';
+import ProviderService from './services/ProviderService';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createBrowserHistory} from 'history';
+import RouterWrapper from './RouterWrapper';
 import {AppContainer as ReactHotLoader} from 'react-hot-loader';
 import {AsyncComponentProvider} from 'react-async-component';
-import bootstrap from 'react-async-bootstrapper';
-import RouterWrapper from './RouterWrapper';
-import ProviderService from './services/ProviderService';
+import {createBrowserHistory} from 'history';
 
-const codeSplittingState = window.__ASYNC_COMPONENTS_STATE__;
-const serverState = window.__STATE__;
 const initialState = {
-    ...serverState,
     renderReducer: {
-        ...serverState.renderReducer,
         isServerSide: false,
     },
 };
@@ -24,12 +19,9 @@ const history = createBrowserHistory();
 const store = ProviderService.createProviderStore(initialState, history);
 const rootEl = document.getElementById('root');
 
-delete window.__STATE__;
-delete window.__ASYNC_COMPONENTS_STATE__;
-
 const composeApp = (Component) => (
     <ReactHotLoader key={Math.random()}>
-        <AsyncComponentProvider rehydrateState={codeSplittingState}>
+        <AsyncComponentProvider>
             <Component store={store} history={history} />
         </AsyncComponentProvider>
     </ReactHotLoader>
@@ -38,7 +30,7 @@ const composeApp = (Component) => (
 const renderApp = () => {
     const routerWrapper = require('./RouterWrapper').default; // eslint-disable-line global-require
 
-    ReactDOM.hydrate(
+    ReactDOM.render(
         composeApp(routerWrapper),
         rootEl,
     );

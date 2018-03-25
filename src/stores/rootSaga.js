@@ -3,13 +3,10 @@ import UserSaga from './user/UserSaga';
 import UserAction from './user/UserAction';
 
 export default function* rootSaga() {
-    const store = yield select();
-    const isServerSide = store.renderReducer.isServerSide;
-
     const filteredSagas = [
-        isServerSide ? fork(UserSaga.loadUser) : null,
+        fork(UserSaga.loadUser),
         takeLatest(UserAction.LOAD_USER, UserSaga.loadUser),
-    ].filter(Boolean);
+    ];
 
     yield all(filteredSagas);
 }
