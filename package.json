@@ -7,10 +7,10 @@
   },
   "scripts": {
     "---------- HELPERS -----------------------------------------------------------------------------": "",
-    "remove": "rimraf dist",
+    "clean": "rimraf dist",
     "buildServer": "cross-env BABEL_ENV=server ./node_modules/.bin/babel src --out-dir dist",
     "watchServer": "cross-env BABEL_ENV=server ./node_modules/.bin/babel src --out-dir dist --watch",
-    "removeAndBuildServer": "npm run remove && npm run buildServer",
+    "removeAndBuildServer": "npm run clean && npm run buildServer",
     "start": "cross-env NODE_ENV=production node ./dist/server.js",
     "---------- DEVELOPMENT -------------------------------------------------------------------------": "",
     "predev": "npm run removeAndBuildServer",
