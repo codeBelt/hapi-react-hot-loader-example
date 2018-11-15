@@ -1,3 +1,5 @@
+#### [No longer maintained] I will continue to maintain the [TypeScript version](https://github.com/codeBelt/typescript-hapi-react-hot-loader-example).
+
 # `hapi-react-hot-loader-example`
 Example universal/isomorphic application demonstrating react-hot-loader-3 with webpack-3, react and friends, async code splitting, and hapi.
 
